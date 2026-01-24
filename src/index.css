@@ -3,3 +3,7 @@ body{
   background-color: #F8F9FA
   ;
 }
+
+* {
+  box-sizing: border-box;
+}
