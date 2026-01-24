@@ -6,7 +6,7 @@ export default function SidebarElement({label,Icon}){
         <span className="rounded-xl p-2 bg-white  duration-300 group-hover:bg-[#4fd1c5]">
         <Icon  className={'text-[#4fd1c5] duration-300 group-hover:text-white'}  size={20}></Icon>
         </span>
-            <span>{label}</span>
+            <span className="text-[#a0aec0]">{label}</span>
           
     </button>
         </>
