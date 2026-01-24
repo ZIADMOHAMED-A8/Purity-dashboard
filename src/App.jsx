@@ -12,7 +12,10 @@ function App() {
       <Pagecontainer>
         
           <Sidebar></Sidebar>
+         
           <Dashboardboxex></Dashboardboxex>
+          
+          
       </Pagecontainer>
     </>
   )
