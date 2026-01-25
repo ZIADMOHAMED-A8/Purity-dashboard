@@ -14,9 +14,9 @@ export default function Dashboardboxex(){
     ]
     return (
         <>
-            <div className="flex w-full  justify-between gap-10 ">
-                {Icons_mapping.map(e => 
-                    <DashboardBox label={e.label} Icon={e.Icon}></DashboardBox>
+            <div className="flex w-full flex-wrap justify-between gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+                {Icons_mapping.map((e, index) => 
+                    <DashboardBox key={index} label={e.label} Icon={e.Icon}></DashboardBox>
                 )}
 
 
