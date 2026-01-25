@@ -15,7 +15,7 @@ function App() {
       <Pagecontainer>
         
           <Sidebar></Sidebar>
-          <div className='flex flex-col gap-10'>
+          <div className='flex w-full flex-col gap-6 sm:gap-8 md:gap-10'>
           <Dashboardboxex></Dashboardboxex>
           <InfoSection></InfoSection>
           </div>
