@@ -17,7 +17,7 @@ export default function Sidebar() {
   ]
 
   return (
-    <aside className="flex flex-col group/side items-start w-[60px] sm:w-[10px] hover:w-[200px] sm:hover:w-[200px] duration-200 px-2 sm:px-4 
+    <aside className="flex sticky flex-col group/side items-start w-[60px] sm:w-[10px] hover:w-[200px] sm:hover:w-[200px] duration-200 px-2 sm:px-4 
     fixed sm:relative left-0 top-0 h-screen bg-white sm:bg-transparent z-40 sm:z-auto
     shadow-lg sm:shadow-none transition-all duration-200">
       <h1 className="text-xl font-medium uppercase pb-4 opacity-0 sm:opacity-0 border-b border-transparent
