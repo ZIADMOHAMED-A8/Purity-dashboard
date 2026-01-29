@@ -12,14 +12,14 @@ const data = [
 
 export default function ChartCard() {
   return (
-    <div className="bg-white  p-4 rounded-2xl flex-[3] shadow-md max-w-5xl flex flex-col  ">
+    <div className="bg-white  p-4 rounded-2xl flex-[3] shadow-md max-w-5xl flex flex-col gap-6  ">
       <Heading>Sales overview</Heading>
 
       <div className="w-full h-full">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>
 
-            <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
+            {/* <CartesianGrid strokeDasharray="3 3" className="opacity-30" /> */}
             <XAxis axisLine={false}
   tickLine={false} dataKey="name" stroke="gray" />
             <YAxis axisLine={false}
