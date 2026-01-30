@@ -10,6 +10,7 @@ import { Wallet, Globe, FileText, ShoppingCart } from "lucide-react";
 import Heading from './components/Heading'
 import DashboardBox from './components/DashboardBox'
 import Barchartwithboxes from './components/Barchartwithboxes'
+import Projects from './components/Projects'
 
 function App() {
  
@@ -18,12 +19,16 @@ function App() {
       <Pagecontainer>
         
           <Sidebar></Sidebar>
-          <div className='flex w-full flex-col gap-6 sm:gap-8 md:gap-10'>
+          <div className='flex w-full flex-col gap-6 sm:gap-8 md:gap-4'>
           <Dashboardboxex></Dashboardboxex>
           <InfoSection></InfoSection>
           <FeatureCards>
             <Barchartwithboxes></Barchartwithboxes>
             <IndexLineChart></IndexLineChart>
+          </FeatureCards>
+          <FeatureCards>
+            <Projects></Projects>
+            <Barchartwithboxes></Barchartwithboxes>
 
           </FeatureCards>
           </div>
