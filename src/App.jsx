@@ -14,26 +14,20 @@ import Projects from './components/Projects'
 import OrdersReview from './components/OrdersReview'
 
 function App() {
- 
+
   return (
     <>
       <Pagecontainer>
-        
-          <Sidebar></Sidebar>
-          <div className='flex w-full flex-col gap-6 sm:gap-8 md:gap-4'>
-          <Dashboardboxex></Dashboardboxex>
-          <InfoSection></InfoSection>
-          <FeatureCards>
-            <Barchartwithboxes></Barchartwithboxes>
-            <IndexLineChart></IndexLineChart>
-          </FeatureCards>
-          <FeatureCards>
-            <Projects></Projects>
-            <OrdersReview></OrdersReview>
-
-          </FeatureCards>
-          </div>
-          
+        <Dashboardboxex></Dashboardboxex>
+        <InfoSection></InfoSection>
+        <FeatureCards>
+          <Barchartwithboxes></Barchartwithboxes>
+          <IndexLineChart></IndexLineChart>
+        </FeatureCards>
+        <FeatureCards>
+          <Projects></Projects>
+          <OrdersReview></OrdersReview>
+        </FeatureCards>
       </Pagecontainer>
     </>
   )
