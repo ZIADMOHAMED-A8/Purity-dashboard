@@ -11,6 +11,7 @@ import Heading from './components/Heading'
 import DashboardBox from './components/DashboardBox'
 import Barchartwithboxes from './components/Barchartwithboxes'
 import Projects from './components/Projects'
+import OrdersReview from './components/OrdersReview'
 
 function App() {
  
@@ -28,7 +29,7 @@ function App() {
           </FeatureCards>
           <FeatureCards>
             <Projects></Projects>
-            <Barchartwithboxes></Barchartwithboxes>
+            <OrdersReview></OrdersReview>
 
           </FeatureCards>
           </div>
