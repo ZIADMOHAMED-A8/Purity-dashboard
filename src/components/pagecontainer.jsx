@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Sidebar from "./sidebar";
 
 export default function Pagecontainer({children}){
@@ -7,7 +8,7 @@ export default function Pagecontainer({children}){
                 <Sidebar></Sidebar>
                 
                 <div className='flex w-full flex-col gap-6 sm:gap-8 md:gap-4'>
-                {children}
+                <Outlet></Outlet>
                 </div>
                 
             </div>
