@@ -3,14 +3,12 @@ import Dashboardboxex from "../components/DashboardBoxes"
 import FeatureCards from "../components/FeautureCards"
 import InfoSection from "../components/InfoSection"
 import OrdersReview from "../components/OrdersReview"
-import Pagecontainer from "../components/pagecontainer"
 import Projects from "../components/Projects"
 import IndexLineChart from '../components/IndexLineChart'
 
 export default function DashBoardPage() {
     return (
         <>
-            <Pagecontainer>
                 <Dashboardboxex></Dashboardboxex>
                 <InfoSection></InfoSection>
                 <FeatureCards>
@@ -20,8 +18,7 @@ export default function DashBoardPage() {
                 <FeatureCards>
                     <Projects></Projects>
                     <OrdersReview></OrdersReview>
-                </FeatureCards>
-            </Pagecontainer>
+                </FeatureCards> 
         </>
     )
 }
