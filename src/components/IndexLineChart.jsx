@@ -12,7 +12,7 @@ const data = [
 
 export default function ChartCard() {
   return (
-    <div className="bg-white  p-4 rounded-2xl flex-[3] shadow-md max-w-5xl flex flex-col gap-6  ">
+    <div className="bg-white  p-4 rounded-2xl flex-3 shadow-md max-w-5xl flex flex-col gap-6  ">
       <Heading>Sales overview</Heading>
 
       <div className="w-full h-full">
