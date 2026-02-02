@@ -1,7 +1,7 @@
-export default function Heading({children}){
+export default function Heading({children,...props}){
     return (
         <>
-        <h2 className="text-xl font-bold  ">{children}</h2>
+        <h2 {...props} className="text-xl font-bold first-letter:uppercase  ">{children}</h2>
         </>
     )
 }

@@ -1,6 +1,5 @@
-import { Route } from 'lucide-react'
 import './App.css'
-import DashBoardPage from './pages/DashboardPage'
+import PaymentMethod from './components/PaymentMethod.jsx'
 import DashboardRoutes from './routes/index.jsx'
 function App() {
 
