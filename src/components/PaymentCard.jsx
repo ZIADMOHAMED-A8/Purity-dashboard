@@ -5,8 +5,8 @@ export default function PaymentCard({Icon,label,desc,amount}){
     return (
         <>
             <article className="p-4 flex flex-col gap-1 bg-white items-center rounded-2xl p-4">
-                <div className="bg-[#4fd1c5] rounded-xl p-6">
-                <Icon size={40} className="text-white  " />
+                <div className="bg-[#4fd1c5] rounded-xl p-5">
+                <Icon size={30} className="text-white  " />
                 </div>
                 <h1 className=" font-bold text-2xl mt-4">{label}</h1>
                 <p className="text-gray-400

@@ -18,7 +18,7 @@ import {
   ]
 export default function Barchartwithboxes(){
     return (
-        <div className=' p-4 rounded-2xl flex-[2] gap-6 shadow-md flex flex-col'>
+        <div className=' p-4 rounded-2xl flex-2 gap-6 shadow-md flex flex-col'>
         <SimpleBarChart></SimpleBarChart>
         <Heading>Active Users</Heading>
         <BoxesLayout list={ Icons_mapping}></BoxesLayout>
