@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form"
 import FormField from "./FormField"
 import FormButton from "./FormButton"
-import { emailRules, passwordRules } from "./validationRules"
+import { emailRules, passwordRules, nameRules } from "./validationRules"
 
-export default function LoginForm() {
+export default function Signupform() {
   const { handleSubmit, formState: { errors }, register } = useForm()
 
   function onSubmit(data) {
@@ -13,8 +13,18 @@ export default function LoginForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="[&>div>input]:border [&>div>input]:border-gray-300 [&>div>input]:rounded-xl w-xl [&>div>input]:p-2 flex flex-col gap-8 items-start"
+      className="[&>div>input]:border [&>div>input]:border-gray-200 [&>div>input]:rounded-xl [&>div>input]:p-2 flex items-center flex-col gap-8"
     >
+      <FormField
+        label="Name"
+        id="name"
+        type="text"
+        register={register}
+        name="Name"
+        rules={nameRules}
+        error={errors.Name}
+        labelClassName="text-start"
+      />
       <FormField
         label="Email"
         id="email"
@@ -23,8 +33,7 @@ export default function LoginForm() {
         name="email"
         rules={emailRules}
         error={errors.email}
-        className="flex flex-col gap-2 w-[60%]"
-        labelClassName="pt-8"
+        labelClassName="text-start"
       />
       <FormField
         label="Password"
@@ -34,11 +43,9 @@ export default function LoginForm() {
         name="password"
         rules={passwordRules}
         error={errors.password}
-        className="flex flex-col gap-2 w-[60%]"
+        labelClassName="text-start"
       />
-      <FormButton className="w-[60%]">
-        Sign in
-      </FormButton>
+      <FormButton className="w-full">Sign Up</FormButton>
     </form>
   )
 }
