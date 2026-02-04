@@ -1,5 +1,5 @@
 import shakra from '../../assets/chakra.png'
-import LoginForm from '../../components/LoginForm'
+import LoginForm from '../../components/auth/LoginForm'
 
 export default function LoginPage(){
     return (
