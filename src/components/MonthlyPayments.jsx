@@ -3,7 +3,7 @@ import PaymentMethod from "./PaymentMethod";
 
 export default function MonthlyPayments(){
     return (
-        <div className="flex gap-6 ">
+        <div className="flex gap-6  ">
         <PaymentMethod></PaymentMethod>
         <Invoices></Invoices>
         </div>

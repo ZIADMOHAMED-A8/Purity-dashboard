@@ -4,6 +4,7 @@ import DashBoardPage from "../pages/DashboardPage";
 import Pagecontainer from "../components/pagecontainer";
 import PaymentMethod from "../components/PaymentMethod";
 import BillingPage from "../pages/BillingPage";
+import TablesPage from "../pages/TalesPage";
 
 export default function DashboardRoutes() {
     return (
@@ -12,6 +13,8 @@ export default function DashboardRoutes() {
                 <Route path='/' element={<Pagecontainer></Pagecontainer>}>
                     <Route path="dashboard" element={<DashBoardPage></DashBoardPage>}></Route>
                     <Route path="billing" element={<BillingPage></BillingPage>}></Route>
+                    <Route path="Tables" element={<TablesPage></TablesPage>}></Route>
+
 
                 </Route>
 
