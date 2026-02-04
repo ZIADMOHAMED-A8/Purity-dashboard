@@ -1,10 +1,10 @@
-import Barchartwithboxes from "../components/Barchartwithboxes"
-import Dashboardboxex from "../components/DashboardBoxes"
-import FeatureCards from "../components/FeautureCards"
-import InfoSection from "../components/InfoSection"
-import OrdersReview from "../components/OrdersReview"
-import Projects from "../components/Projects"
-import IndexLineChart from '../components/IndexLineChart'
+import Barchartwithboxes from "../components/dashboard/Barchartwithboxes"
+import Dashboardboxex from "../components/dashboard/DashboardBoxes"
+import FeatureCards from "../components/dashboard/FeautureCards"
+import InfoSection from "../components/dashboard/InfoSection"
+import OrdersReview from "../components/dashboard/OrdersReview"
+import Projects from "../components/tables/Projects"
+import IndexLineChart from '../components/dashboard/IndexLineChart'
 
 export default function DashBoardPage() {
     return (

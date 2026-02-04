@@ -1,5 +1,5 @@
-import AuthorsTable from '../components/AuthorsTable'
-import Projects from '../components/Projects'
+import AuthorsTable from '../components/tables/AuthorsTable'
+import Projects from '../components/tables/Projects'
 export default function TablesPage(){
     return (
         <>

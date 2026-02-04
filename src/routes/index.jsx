@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/layout/sidebar";
 import DashBoardPage from "../pages/DashboardPage";
-import Pagecontainer from "../components/pagecontainer";
-import PaymentMethod from "../components/PaymentMethod";
+import Pagecontainer from "../components/layout/pagecontainer";
+import PaymentMethod from "../components/billing/PaymentMethod";
 import BillingPage from "../pages/BillingPage";
 import TablesPage from "../pages/TalesPage";
 import LoginPage from "../pages/auth/LoginPage";

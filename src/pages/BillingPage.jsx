@@ -1,6 +1,6 @@
-import BillingInfo from "../components/BillingInfo";
-import MonthlyPayments from "../components/MonthlyPayments";
-import TransactionsSection from "../components/TransactionsSection";
+import BillingInfo from "../components/billing/BillingInfo";
+import MonthlyPayments from "../components/billing/MonthlyPayments";
+import TransactionsSection from "../components/billing/TransactionsSection";
 
 export default function BillingPage() {
     return (
