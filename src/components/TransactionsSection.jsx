@@ -6,7 +6,6 @@ export default function () {
         <div className="flex gap-6 ">
             <BillingInfo></BillingInfo>
             <Transactions></Transactions>
-
         </div>
     )
 }
