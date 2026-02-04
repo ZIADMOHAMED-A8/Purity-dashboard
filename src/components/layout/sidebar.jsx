@@ -1,4 +1,4 @@
-import { Home, BarChart3, CreditCard, Wrench, User, FileText, Rocket } from "lucide-react";
+import { Home, BarChart3, CreditCard,  User, FileText, Rocket } from "lucide-react";
 import SidebarElement from "./sidebarElement";
 
 export default function Sidebar() {
@@ -7,7 +7,7 @@ export default function Sidebar() {
     { label: "Dashboard", icon: Home },
     { label: "Tables", icon: BarChart3 },
     { label: "Billing", icon: CreditCard },
-    { label: "RTL", icon: Wrench },
+    
   ];
   const menu2Items=[
     {label:'Profile',icon:User},

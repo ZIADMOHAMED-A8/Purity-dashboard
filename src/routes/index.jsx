@@ -6,6 +6,7 @@ import PaymentMethod from "../components/billing/PaymentMethod";
 import BillingPage from "../pages/BillingPage";
 import TablesPage from "../pages/TalesPage";
 import LoginPage from "../pages/auth/LoginPage";
+import SignupPage from "../pages/auth/SignupPage";
 
 export default function DashboardRoutes() {
     return (
@@ -16,9 +17,10 @@ export default function DashboardRoutes() {
                     <Route path="billing" element={<BillingPage></BillingPage>}></Route>
                     <Route path="Tables" element={<TablesPage></TablesPage>}></Route>
                 </Route>
-                <Route path="/sign in" element={<LoginPage></LoginPage>}>
+                <Route path="/sign in" element={<LoginPage></LoginPage>}> </Route>
+                <Route path="/Sign up" element={<SignupPage />}> </Route>
 
-                </Route>
+
 
 
             </Routes>
