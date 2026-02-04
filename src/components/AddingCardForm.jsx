@@ -1,5 +1,5 @@
 export default function AddingCardForm({ errors, handleSubmit, register, onSubmit }) {
-    return (
+  return (
       <>
         <form
           id="payment-form"
@@ -64,6 +64,10 @@ export default function AddingCardForm({ errors, handleSubmit, register, onSubmi
                 min={new Date().toISOString().split("T")[0]}
                 {...register("Expiry", {
                   required: "Expiry is required",
+                  min:{
+                    value:new Date().toISOString().split("T")[0],
+                    message:'Expiry date is invalid'
+                  }
                 })}
               />
               {errors.Expiry && (
