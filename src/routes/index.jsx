@@ -7,6 +7,7 @@ import BillingPage from "../pages/BillingPage";
 import TablesPage from "../pages/TalesPage";
 import LoginPage from "../pages/auth/LoginPage";
 import SignupPage from "../pages/auth/SignupPage";
+import OtpPage from "../pages/auth/OtpPage";
 
 export default function DashboardRoutes() {
     return (
@@ -19,6 +20,8 @@ export default function DashboardRoutes() {
                 </Route>
                 <Route path="/sign in" element={<LoginPage></LoginPage>}> </Route>
                 <Route path="/Sign up" element={<SignupPage />}> </Route>
+                <Route path="/Otp" element={<OtpPage/>}> </Route>
+
 
 
 
