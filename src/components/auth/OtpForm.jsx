@@ -19,10 +19,10 @@ export default function OtpForm({ length = 5, onSubmit }) {
 
   useEffect(() => {
     const listener = (e) => handleKeyDown(e, contRef)
-    window.addEventListener("keydown", listener)
+    window.addEventListener("onChange", listener)
 
     return () => {
-      window.removeEventListener("keydown", listener)
+      window.removeEventListener("onChange", listener)
     }
   }, [])
 

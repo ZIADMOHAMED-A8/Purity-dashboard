@@ -1,5 +1,6 @@
 import { Home, BarChart3, CreditCard,  User, FileText, Rocket } from "lucide-react";
 import SidebarElement from "./sidebarElement";
+import { useSelector } from "react-redux";
 
 export default function Sidebar() {
 
@@ -15,7 +16,6 @@ export default function Sidebar() {
     {label:'Sign up',icon:Rocket},
 
   ]
-
   return (
     <aside className="flex sticky flex-col group/side items-start w-[60px] sm:w-[10px] hover:w-[200px] sm:hover:w-[200px] duration-200 px-2 sm:px-4 
       left-0 top-0 h-screen bg-white sm:bg-transparent z-40 sm:z-auto
@@ -28,7 +28,6 @@ export default function Sidebar() {
       [background-position:0_100%] text-center whitespace-nowrap text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl">
         Purity Dashboard
       </h1>
-
       <ul className="flex flex-col gap-3 sm:gap-5 py-4 w-full">
         {menuItems.map((item, index) => (
           <SidebarElement
