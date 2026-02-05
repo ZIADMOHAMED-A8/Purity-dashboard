@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux"
 import { supabase } from "../supabaseClient"
+import { setCredentials } from "./features/auth/authSlice"
 
 
  export default async function Login(email,password){
@@ -8,11 +10,18 @@ import { supabase } from "../supabaseClient"
       })
       if(error){
         console.error(error)
-        return error
+        return {
+          error:error,
+          data:undefined
+        }
       }
       else{
         console.log(data)
-        return data
+
+        return {
+          error:undefined,
+          data:data
+        }
 
       }
 }
