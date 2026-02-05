@@ -3,14 +3,18 @@ import FormField from "./FormField"
 import FormButton from "./FormButton"
 import { emailRules, passwordRules } from "./validationRules"
 import Login from "../../Login"
+import { useDispatch } from "react-redux"
+import { setCredentials } from "../../features/auth/authSlice"
 export default function LoginForm() {
   const { handleSubmit, formState: { errors }, register } = useForm()
-
+  const dispatch=useDispatch()
   async function onSubmit(data) {
-    console.log(data.email)
     let {data:authData,error}=await Login(data.email,data.password)
+    console.log('auth',authData)
     if(authData){
+      console.log('etbdnt')
       nav('/')
+      dispatch(setCredentials(authData))
     }
 
   }

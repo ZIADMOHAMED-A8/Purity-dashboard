@@ -1,6 +1,5 @@
 import { Home, BarChart3, CreditCard,  User, FileText, Rocket } from "lucide-react";
 import SidebarElement from "./sidebarElement";
-import { useSelector } from "react-redux";
 
 export default function Sidebar() {
 
