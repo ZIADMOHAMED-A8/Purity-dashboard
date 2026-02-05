@@ -1,10 +1,19 @@
+import { useNavigate } from "react-router-dom"
 import bg from "../../assets/bg.png"
 import OtpForm from "../../components/auth/OtpForm"
+import verifyOTP from "../../VerifyOTP"
+import { useEffect } from "react"
 
 export default function OtpPage() {
-  function handleOtpSubmit(data) {
+    const nav=useNavigate()
+    useEffect(()=>{
+        if(!sessionStorage.getItem('email')){nav('/sign up')}
+    })
+    async function handleOtpSubmit(data) {
     // to hit an endpoint
-    console.log("OTP submitted", data)
+    const otp=data.otp.reduce((acc,current)=>acc+current)
+    const {authData}=await verifyOTP(otp)
+    console.log(authData)
   }
 
   return (
@@ -17,7 +26,7 @@ export default function OtpPage() {
             </p>
           </div>
 
-          <OtpForm length={5} onSubmit={handleOtpSubmit} />
+          <OtpForm length={6} onSubmit={handleOtpSubmit} />
         </div>
 
         <img src={bg} alt="" />
