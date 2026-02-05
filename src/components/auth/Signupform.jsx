@@ -2,12 +2,13 @@ import { useForm } from "react-hook-form"
 import FormField from "./FormField"
 import FormButton from "./FormButton"
 import { emailRules, passwordRules, nameRules } from "./validationRules"
-
+import Signup from "../../../SignUp"
 export default function Signupform() {
   const { handleSubmit, formState: { errors }, register } = useForm()
 
-  function onSubmit(data) {
+  async function onSubmit(data) {
     console.log(data)
+    await Signup(data.email,data.password)
   }
 
   return (
