@@ -9,9 +9,15 @@ export default async function Signup(email,password) {
     )
     if(error){
         console.error(error)
+        return {error:error,
+            data:null
+        }
     }
     else{
         console.log(data)
+        return {error:null,
+            data:data
+        }
     }
     
 }

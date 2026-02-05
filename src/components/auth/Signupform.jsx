@@ -3,12 +3,21 @@ import FormField from "./FormField"
 import FormButton from "./FormButton"
 import { emailRules, passwordRules, nameRules } from "./validationRules"
 import Signup from "../../../SignUp"
+import { useNavigate } from "react-router-dom"
 export default function Signupform() {
   const { handleSubmit, formState: { errors }, register } = useForm()
-
+  const nav = useNavigate()
   async function onSubmit(data) {
-    console.log(data)
-    await Signup(data.email,data.password)
+    let authData = await Signup(data.email, data.password)
+    if (authData.user) {
+      console.log('tmm')
+      sessionStorage.setItem('email', email)
+      nav('/Otp')
+    }
+    else {
+      console.log(authData)
+    }
+
   }
 
   return (
