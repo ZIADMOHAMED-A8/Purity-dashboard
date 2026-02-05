@@ -9,6 +9,7 @@ import IndexLineChart from '../components/dashboard/IndexLineChart'
 export default function DashBoardPage() {
     return (
         <>
+                
                 <Dashboardboxex></Dashboardboxex>
                 <InfoSection></InfoSection>
                 <FeatureCards>

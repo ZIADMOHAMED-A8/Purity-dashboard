@@ -1,18 +1,21 @@
-import { Home, BarChart3, CreditCard,  User, FileText, Rocket } from "lucide-react";
+import { Home, BarChart3, CreditCard, User, FileText, Rocket, LogOut } from "lucide-react";
 import SidebarElement from "./sidebarElement";
+import { useSelector } from "react-redux";
 
 export default function Sidebar() {
+  const isAuth = useSelector((state) => state.auth.isAuthednticated)
 
   const menuItems = [
     { label: "Dashboard", icon: Home },
     { label: "Tables", icon: BarChart3 },
     { label: "Billing", icon: CreditCard },
-    
+
   ];
-  const menu2Items=[
-    {label:'Profile',icon:User},
-    {label:'Sign in',icon:FileText},
-    {label:'Sign up',icon:Rocket},
+  const menu2Items = [
+    { label: 'Profile', icon: User },
+    {label:'Log out',icon:LogOut},
+    { label: 'Sign in', icon: FileText },
+    { label: 'Sign up', icon: Rocket },
 
   ]
   return (
@@ -36,12 +39,15 @@ export default function Sidebar() {
           />
         ))}
       </ul>
-        <ul className="flex flex-col gap-2 w-full">
-            <h1 className="text-sm sm:text-base font-medium p-4 py-2 opacity-0 sm:opacity-0 group-hover/side:opacity-100 duration-300 uppercase">Account Pages</h1>
-            {menu2Items.map((e, index)=>
-            <SidebarElement key={index} Icon={e.icon} label={e.label}></SidebarElement>
-            )}
-        </ul>
+      <ul className="flex flex-col gap-2 w-full">
+        <h1 className="text-sm sm:text-base font-medium p-4 py-2 opacity-0 sm:opacity-0 group-hover/side:opacity-100 duration-300 uppercase">Account Pages</h1>
+        {!isAuth && menu2Items.splice(1, 2).map((e, index) =>
+          <SidebarElement key={index} Icon={e.icon} label={e.label}></SidebarElement>
+        )}
+        {isAuth && menu2Items.splice(0, 2).map((e, index) =>
+          <SidebarElement key={index} Icon={e.icon} label={e.label}></SidebarElement>
+        )}
+      </ul>
     </aside>
   );
 }
