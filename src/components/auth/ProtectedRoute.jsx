@@ -1,14 +1,16 @@
-import { Children, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { getUser } from "../../utils/getUser";
+import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({ children }) {
-    const isAuth = useSelector((state) => state.auth.isAuthednticated)
-    const nav = useNavigate()
+  const { isAuthednticated, isLoading } = useSelector(
+    (state) => state.auth
+  );
 
+  if (isLoading) return <p>loading</p>; 
 
-    return (
-        <>{children}</>
-    )
+  if (!isAuthednticated) {
+    return <Navigate to="/sign-in" replace />;
+  }
+
+  return <>{children}</>;
 }
