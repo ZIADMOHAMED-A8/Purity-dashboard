@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Sidebar from "../components/layout/sidebar";
 import DashBoardPage from "../pages/DashboardPage";
 import Pagecontainer from "../components/layout/pagecontainer";
@@ -8,8 +8,11 @@ import TablesPage from "../pages/TalesPage";
 import LoginPage from "../pages/auth/LoginPage";
 import SignupPage from "../pages/auth/SignupPage";
 import OtpPage from "../pages/auth/OtpPage";
+import ProfileBanner from "../components/profile/ProfileBanner";
+import { useSelector } from "react-redux";
 
 export default function DashboardRoutes() {
+    const email=useSelector(state =>state.register.email)
     return (
         <>
             <Routes>
@@ -17,10 +20,17 @@ export default function DashboardRoutes() {
                     <Route path="dashboard" element={<DashBoardPage></DashBoardPage>}></Route>
                     <Route path="billing" element={<BillingPage></BillingPage>}></Route>
                     <Route path="Tables" element={<TablesPage></TablesPage>}></Route>
+                    <Route path="profile" element={<ProfileBanner></ProfileBanner>}></Route>
+
                 </Route>
                 <Route path="/sign in" element={<LoginPage></LoginPage>}> </Route>
                 <Route path="/Sign up" element={<SignupPage />}> </Route>
-                <Route path="/Otp" element={<OtpPage/>}> </Route>
+                <Route
+                    path="/otp"
+                    element={
+                        email ? <OtpPage /> : <Navigate to="/sign up" />
+                    }
+                />
 
 
 

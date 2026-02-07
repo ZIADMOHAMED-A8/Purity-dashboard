@@ -14,6 +14,7 @@ export default function handleKeyDown(e, contRef) {
     if (e.key === "Backspace") {
         if (activeEl.value === "" && index > 0) {
             inputs[index - 1].focus()
+            console.log('ddddddd')
         }
     }
 

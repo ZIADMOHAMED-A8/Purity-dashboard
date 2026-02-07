@@ -5,9 +5,11 @@ import { emailRules, passwordRules } from "./validationRules"
 import Login from "../../Login"
 import { useDispatch } from "react-redux"
 import { setCredentials } from "../../features/auth/authSlice"
+import { useNavigate } from "react-router-dom"
 export default function LoginForm() {
   const { handleSubmit, formState: { errors }, register } = useForm()
   const dispatch=useDispatch()
+  const nav=useNavigate()
   async function onSubmit(data) {
     let {data:authData,error}=await Login(data.email,data.password)
     console.log('auth',authData)
