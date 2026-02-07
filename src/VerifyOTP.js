@@ -1,9 +1,9 @@
 import { supabase } from "../supabaseClient"
 
 
- export default async function verifyOTP(tokenFromUser){
+ export default async function verifyOTP(email,tokenFromUser){
     const { data, error } = await supabase.auth.verifyOtp({
-        email: sessionStorage.getItem('email'),
+        email,
         token: tokenFromUser,
         type: 'signup' 
       })
@@ -16,7 +16,7 @@ import { supabase } from "../supabaseClient"
       }
       else{
         console.log(data)
-        sessionStorage.removeItem('email')
+        
         return {
             error:null,
             data:data

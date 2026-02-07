@@ -4,14 +4,20 @@ import FormButton from "./FormButton"
 import { emailRules, passwordRules, nameRules } from "./validationRules"
 import Signup from "../../../SignUp"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { addEmail } from "../../features/auth/registerSlice"
+
 export default function Signupform() {
   const { handleSubmit, formState: { errors }, register } = useForm()
+  const dispatch = useDispatch()
   const nav = useNavigate()
-  async function onSubmit(data) {
-    let authData = await Signup(data.email, data.password)
-    if (authData.user) {
+  async function onSubmit({ email, password,Name }) {
+    let authData = await Signup(email, password,Name)
+    if (authData) {
       console.log('tmm')
-      sessionStorage.setItem('email', email)
+      dispatch(addEmail({
+        email
+      }))
       nav('/Otp')
     }
     else {
