@@ -6,13 +6,16 @@ import Signup from "../../../SignUp"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { addEmail } from "../../features/auth/registerSlice"
+import { useState } from "react"
 
 export default function Signupform() {
   const { handleSubmit, formState: { errors }, register } = useForm()
   const dispatch = useDispatch()
+  const [otpErrors, setotpErrors] = useState([])
   const nav = useNavigate()
-  async function onSubmit({ email, password,Name }) {
-    let authData = await Signup(email, password,Name)
+  async function onSubmit({ email, password, Name }) {
+    let {data:authData,error} = await Signup(email, password, Name)
+  
     if (authData) {
       console.log('tmm')
       dispatch(addEmail({
@@ -20,8 +23,12 @@ export default function Signupform() {
       }))
       nav('/Otp')
     }
-    else {
-      console.log(authData)
+    else {  
+      console.log
+      setotpErrors([
+
+        {message:error.message}
+      ])
     }
 
   }
@@ -62,6 +69,11 @@ export default function Signupform() {
         labelClassName="text-start"
       />
       <FormButton className="w-full">Sign Up</FormButton>
+ {otpErrors[0]?.message &&
+         <div className="text-red-400">
+         {otpErrors[0].message}
+       </div>
+ }
     </form>
   )
 }

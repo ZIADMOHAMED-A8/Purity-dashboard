@@ -6,17 +6,38 @@ import Login from "../../Login"
 import { useDispatch } from "react-redux"
 import { setCredentials } from "../../features/auth/authSlice"
 import { useNavigate } from "react-router-dom"
+import { useState,useEffect } from "react"
 export default function LoginForm() {
-  const { handleSubmit, formState: { errors }, register } = useForm()
-  const dispatch=useDispatch()
-  const nav=useNavigate()
+  const { watch, handleSubmit, formState: { errors }, register } = useForm()
+  const dispatch = useDispatch()
+  const nav = useNavigate()
+  const watchedValues = watch()
+  console.log(watchedValues)
+  const [loginErrors, setErrors] = useState({
+    message: null
+  })
+  useEffect(() => {
+    if (loginErrors.message) {
+      
+      setErrors({ message: null })
+      console.log('dss')
+    }
+  }, [watchedValues.email,watchedValues.password])
+ 
   async function onSubmit(data) {
-    let {data:authData,error}=await Login(data.email,data.password)
-    console.log('auth',authData)
-    if(authData){
+    const { data: authData, error } = await Login(data.email, data.password)
+
+    console.log('auth', authData)
+    if (authData) {
       console.log('etbdnt')
       nav('/')
       dispatch(setCredentials(authData))
+    }
+    else {
+      const tempError = {
+        message: error.message
+      }
+      setErrors(tempError)
     }
 
   }
@@ -47,6 +68,11 @@ export default function LoginForm() {
         error={errors.password}
         className="flex flex-col gap-2 w-[60%]"
       />
+      {loginErrors?.message &&
+        <div className="text-red-400">
+          {loginErrors?.message}
+        </div>
+      }
       <FormButton className="w-[60%]">
         Sign in
       </FormButton>

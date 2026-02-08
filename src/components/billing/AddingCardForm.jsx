@@ -8,9 +8,9 @@ export default function AddingCardForm({ errors, handleSubmit, register, onSubmi
           [&>div>div>input]:border-1  [&>div>div>input]:rounded-2xl [&>div>div>input]:p-2  [&>div>div>input]:h-15  [&>div>div>input]:border-gray-400
           "
         >
-          {/* Card Number */}
           <div className="relative">
             <input
+            type="number"
               className="w-full"
               placeholder="Card Number"
               {...register("CardNumber", {
@@ -29,12 +29,11 @@ export default function AddingCardForm({ errors, handleSubmit, register, onSubmi
             )}
           </div>
   
-          {/* CVV + Expiry */}
           <div className="flex gap-6">
-            {/* CVV */}
             <div className="relative w-1/2">
               <input
                 className="w-full"
+                type="number"
                 placeholder="CVV"
                 {...register("CVV", {
                   required: "CVV is required",
@@ -58,6 +57,7 @@ export default function AddingCardForm({ errors, handleSubmit, register, onSubmi
             {/* Expiry */}
             <div className="relative w-1/2">
               <input
+              
                 className="w-full"
                 type="date"
                 placeholder="Expiry"

@@ -5,30 +5,30 @@ import PublicRoute from "../../components/auth/PublicRoute"
 import { useDispatch, useSelector } from "react-redux"
 import { removeEmail } from "../../features/auth/registerSlice"
 import OTPInput from "react-otp-input"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import FormButton from "../../components/auth/FormButton"
 
 export default function OtpPage() {
-  const dispatch = useDispatch()
   const nav = useNavigate()
   const email = useSelector((state) => state.register.email)
-
+  const [otpErrors,setotpErrors]=useState(null)
   const [otp, setOtp] = useState("")
-
   async function handleVerify() {
     if (otp.length !== 6) return
 
-    const { data: authData, error } = await verifyOTP(email, otp)
+    let { data: authData, error } = await verifyOTP(email, otp)
+    
 
     if (authData) {
-      dispatch(removeEmail())
-      nav("/dashboard")
+      nav("/profile")
       console.log("you're registered")
+    }
+    else if(error){
+      setotpErrors(error)
     }
   }
 
   return (
-    <PublicRoute>
       <div className="py-6">
         <div className="relative flex justify-center">
           <div className="absolute left-[50%] top-[20%] -translate-x-[50%] flex flex-col gap-10 text-center text-white z-10">
@@ -38,7 +38,15 @@ export default function OtpPage() {
 
             <OTPInput
               value={otp}
-              onChange={setOtp}
+              onChange={(value) => {
+                setOtp((prev) => {
+                  if (prev !== value && otpErrors) {
+                    setotpErrors(null)
+                  }
+                  return value
+                })
+              }}
+              
               numInputs={6}
               inputType="tel"
               shouldAutoFocus
@@ -75,11 +83,11 @@ export default function OtpPage() {
             >
               Verify
             </FormButton>
+            {otpErrors && <div className="text-red-400">{otpErrors.message}</div>}
           </div>
 
           <img src={bg} alt="" className="w-auto h-auto" />
         </div>
       </div>
-    </PublicRoute>
   )
 }
