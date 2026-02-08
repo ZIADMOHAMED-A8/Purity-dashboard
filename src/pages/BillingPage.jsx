@@ -6,10 +6,8 @@ import TransactionsSection from "../components/billing/TransactionsSection";
 export default function BillingPage() {
     return (
         <>
-            <ProtectedRoute>
                 <MonthlyPayments></MonthlyPayments>
                 <TransactionsSection></TransactionsSection>
-            </ProtectedRoute>
         </>
     )
 }
