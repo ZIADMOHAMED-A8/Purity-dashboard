@@ -1,7 +1,8 @@
-import AuthorsData from "../../utils/AuthorsData"
 import OfflineIcon from "../ui/OfflineIcon"
 import OnlineIcon from "../ui/OnlineIcon"
 import Avatar from '../../assets/Avatar.png'
+import { useQuery } from "@tanstack/react-query"
+import { getMembers } from "../../api/getDashboardData/getMembers"
 const states_mapping = {
     offline: OfflineIcon,
     online: OnlineIcon
@@ -9,9 +10,16 @@ const states_mapping = {
 
 
 export default function AuthorPorjectrows() {
+    const {data,isLoading}=useQuery({
+        queryKey:['members'],
+        queryFn:getMembers
+    })
+    if(isLoading){
+        return <p>loading...</p>
+    }
     return (
         <>
-            {AuthorsData.map(e => {
+            {data.map(e => {
                 const Icon = states_mapping[e.status]
                 return (
                     <tr key={e.id}>
@@ -34,7 +42,7 @@ export default function AuthorPorjectrows() {
                             <Icon></Icon>
                         </td>
                         <td>
-                            <p className="font-bold"> {e.employedAt}</p>
+                            <p className="font-bold"> {e.employed_at}</p>
                         </td>
                     </tr>
                 )
