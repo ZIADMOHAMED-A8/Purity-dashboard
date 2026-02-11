@@ -29,7 +29,6 @@ export default function LoginForm() {
 
     console.log('auth', authData)
     if (authData) {
-      console.log('etbdnt')
       nav('/')
       dispatch(setCredentials(authData))
     }

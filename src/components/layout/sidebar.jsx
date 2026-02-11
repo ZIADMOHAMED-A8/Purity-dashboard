@@ -5,7 +5,7 @@ import logout from "../../utils/logout";
 
 export default function Sidebar() {
   const isAuth = useSelector((state) => state.auth.isAuthednticated)
-
+  const isAdmin = useSelector(state => state.auth.isAdmin)
   const menuItems = [
     { label: "Dashboard", icon: Home },
     { label: "Tables", icon: BarChart3 },
@@ -14,7 +14,7 @@ export default function Sidebar() {
   ];
   const menu2Items = [
     { label: 'Profile', icon: User },
-    {label:'Log out',icon:LogOut},
+    { label: 'Log out', icon: LogOut },
     { label: 'Sign in', icon: FileText },
     { label: 'Sign up', icon: Rocket },
 
@@ -42,14 +42,15 @@ export default function Sidebar() {
       </ul>
       <ul className="flex flex-col gap-2 w-full">
         <h1 className="text-sm sm:text-base font-medium p-4 py-2 opacity-0 sm:opacity-0 group-hover/side:opacity-100 duration-300 uppercase">Account Pages</h1>
-        {isAuth===false && menu2Items.splice(2, 4).map((e, index) =>
+        {isAuth === false && menu2Items.splice(2, 4).map((e, index) =>
           <SidebarElement key={index} Icon={e.icon} label={e.label}></SidebarElement>
         )}
         {isAuth && menu2Items.splice(0, 2).map((e, index) =>
           <SidebarElement key={index} Icon={e.icon} label={e.label}></SidebarElement>
         )}
-          <button onClick={logout}>logout</button>
-        
+        <button onClick={logout}>logout</button>
+       
+
       </ul>
     </aside>
   );

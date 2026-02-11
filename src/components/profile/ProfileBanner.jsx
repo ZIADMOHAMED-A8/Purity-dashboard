@@ -20,7 +20,7 @@ export default function ProfileBanner() {
                                     <img src={Avatar} className='w-[64px] h-[64px]'></img>
                                 </div>
                                 <div>
-                                    <h1 className='font-bold text-xl capitalize'>{user.user_metadata.first_name}</h1>
+                                    <h1 className='font-bold text-xl capitalize'>{user?.user_metadata?.role}{user.user_metadata.first_name}</h1>
                                     <p className='text-gray-400 -mt-1 text-sm'>{user.email}</p>
                                 </div>
                             </div>
