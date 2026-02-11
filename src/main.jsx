@@ -6,17 +6,20 @@ import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./features/auth/AuthProvider.jsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store.js";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const root = createRoot(document.getElementById("root"));
-
+const queryClient = new QueryClient()
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <StrictMode>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
-      </StrictMode>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <StrictMode>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </StrictMode>
+      </BrowserRouter>
+    </QueryClientProvider>
   </Provider>
 );
