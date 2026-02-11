@@ -17,8 +17,8 @@ export const passwordRules = {
 
 export const nameRules = {
   required: "please enter your name",
-  minLength: {
-    value: 3,
-    message: "please enter your name",
-  },
+pattern:{
+    value:/^[a-zA-Z\s'-]+$/,
+    message:'please enter a valid name'
+  }
 }

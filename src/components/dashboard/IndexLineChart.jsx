@@ -1,16 +1,17 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts";
 import Heading from "../ui/Heading";
+import { useQuery } from "@tanstack/react-query";
+import { getMonthlyStats } from "../../api/getDashboardData/getSales";
 
-const data = [
-  { name: "Jan", uv: 400, pv: 240 },
-  { name: "Feb", uv: 300, pv: 456 },
-  { name: "Mar", uv: 300, pv: 139 },
-  { name: "Apr", uv: 200, pv: 980 },
-  { name: "May", uv: 278, pv: 390 },
-  { name: "Jun", uv: 189, pv: 480 },
-];
 
 export default function ChartCard() {
+  const {data,isLoading}=useQuery({
+    name:['monthlyStats'],
+    queryFn:getMonthlyStats
+  })
+  if(isLoading){
+    return <p className="flex-2">loading...</p>
+  }
   return (
     <div className="bg-white  p-4 rounded-2xl flex-3 shadow-md max-w-5xl flex flex-col gap-6  ">
       <Heading>Sales overview</Heading>
