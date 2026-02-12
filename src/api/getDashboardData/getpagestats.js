@@ -12,3 +12,14 @@ export async function getPageStats() {
 
   return data;
 }
+
+export async function updatePageStat(id, updates) {
+  const { error } = await supabase
+    .from("page_stats")
+    .update(updates)
+    .eq("id", id);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+}
