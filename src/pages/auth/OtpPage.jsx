@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import bg from "../../assets/bg.png"
-import verifyOTP from "../../VerifyOTP"
+
 import PublicRoute from "../../components/auth/PublicRoute"
 import { useDispatch, useSelector } from "react-redux"
 import { removeEmail } from "../../features/auth/registerSlice"
@@ -8,20 +8,25 @@ import OTPInput from "react-otp-input"
 import { useState, useEffect } from "react"
 import FormButton from "../../components/auth/FormButton"
 import { setCredentials } from "../../features/auth/authSlice"
+import { useMutation } from "@tanstack/react-query"
+import verifyOTP from "../../api/auth/VerifyOTP"
 
 export default function OtpPage() {
   const nav = useNavigate()
   const dispatch = useDispatch()
+  const {mutateAsync}=useMutation({
+    mutationFn:verifyOTP
+  })
   const email = useSelector((state) => state.register.email)
   const [otpErrors, setotpErrors] = useState(null)
   const [otp, setOtp] = useState("")
   async function handleVerify() {
     if (otp.length !== 6) return
 
-    let { data: authData, error } = await verifyOTP(email, otp)
+    let { data: authData, error } = await mutateAsync({email, otp})
 
 
-    if (authData) {
+    if (authData?.user) {
 
       dispatch(setCredentials(authData));
       nav("/profile")

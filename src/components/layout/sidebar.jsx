@@ -37,18 +37,18 @@ export default function Sidebar() {
             key={index}
             Icon={item.icon}
             label={item.label}
+            
           />
         ))}
       </ul>
       <ul className="flex flex-col gap-2 w-full">
         <h1 className="text-sm sm:text-base font-medium p-4 py-2 opacity-0 sm:opacity-0 group-hover/side:opacity-100 duration-300 uppercase">Account Pages</h1>
         {isAuth === false && menu2Items.splice(2, 4).map((e, index) =>
-          <SidebarElement key={index} Icon={e.icon} label={e.label}></SidebarElement>
+          <SidebarElement key={index} Icon={e.icon} label={e.label} isLogout={e.label==='Log out'}></SidebarElement>
         )}
         {isAuth && menu2Items.splice(0, 2).map((e, index) =>
-          <SidebarElement key={index} Icon={e.icon} label={e.label}></SidebarElement>
+          <SidebarElement key={index} Icon={e.icon} label={e.label} isLogout={e.label==='Log out'}></SidebarElement>
         )}
-        <button onClick={logout}>logout</button>
        
 
       </ul>
