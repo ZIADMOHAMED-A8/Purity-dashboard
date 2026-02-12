@@ -11,9 +11,11 @@ import OtpPage from "../pages/auth/OtpPage";
 import ProfileBanner from "../components/profile/ProfileBanner";
 import { useSelector } from "react-redux";
 import ShowUsers from "../pages/ShowUsers";
+import Editdata from "../pages/Editdata";
+import AdminRoute from "./AdminRoute";
 
 export default function DashboardRoutes() {
-    const email=useSelector(state =>state.register.email)
+    const email = useSelector(state => state.register.email)
     return (
         <>
             <Routes>
@@ -23,6 +25,7 @@ export default function DashboardRoutes() {
                     <Route path="Tables" element={<TablesPage></TablesPage>}></Route>
                     <Route path="profile" element={<ProfileBanner></ProfileBanner>}></Route>
                     <Route path="showusers" element={<ShowUsers></ShowUsers>}></Route>
+                    <Route path="edit" element={<AdminRoute><Editdata></Editdata></AdminRoute>}></Route>
 
 
                 </Route>
