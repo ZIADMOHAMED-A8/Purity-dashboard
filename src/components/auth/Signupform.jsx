@@ -2,21 +2,25 @@ import { useForm } from "react-hook-form"
 import FormField from "./FormField"
 import FormButton from "./FormButton"
 import { emailRules, passwordRules, nameRules } from "./validationRules"
-import Signup from "../../../SignUp"
+import Signup from "../../api/auth/SignUp"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { addEmail } from "../../features/auth/registerSlice"
 import { useState } from "react"
+import { useMutation } from "@tanstack/react-query"
 
 export default function Signupform() {
   const { handleSubmit, formState: { errors }, register } = useForm()
+  const {mutateAsync,isPending}=useMutation({
+    mutationFn:Signup
+  })
   const dispatch = useDispatch()
   const [otpErrors, setotpErrors] = useState([])
   const nav = useNavigate()
   async function onSubmit({ email, password, Name }) {
-    let {data:authData,error} = await Signup(email, password, Name)
+    let {data:authData,error} = await mutateAsync({email, password, name:Name})
   
-    if (authData) {
+    if (authData?.user) {
       console.log('tmm')
       dispatch(addEmail({
         email
@@ -68,7 +72,7 @@ export default function Signupform() {
         error={errors.password}
         labelClassName="text-start"
       />
-      <FormButton className="w-full">Sign Up</FormButton>
+      <FormButton disabled={isPending} className={isPending ? "w-full bg-gray-500 hover:bg-gray-500" : "w-full"} >Sign Up</FormButton>
  {otpErrors[0]?.message &&
          <div className="text-red-400">
          {otpErrors[0].message}

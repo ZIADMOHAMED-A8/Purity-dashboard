@@ -2,13 +2,17 @@ import { useForm } from "react-hook-form"
 import FormField from "./FormField"
 import FormButton from "./FormButton"
 import { emailRules, passwordRules } from "./validationRules"
-import Login from "../../Login"
+import Login from "../../api/auth/Login"
 import { useDispatch } from "react-redux"
 import { setCredentials } from "../../features/auth/authSlice"
 import { useNavigate } from "react-router-dom"
 import { useState,useEffect } from "react"
+import { useMutation } from "@tanstack/react-query"
 export default function LoginForm() {
   const { watch, handleSubmit, formState: { errors }, register } = useForm()
+  const { mutateAsync,isPending  } = useMutation({
+    mutationFn:Login
+  })
   const dispatch = useDispatch()
   const nav = useNavigate()
   const watchedValues = watch()
@@ -18,21 +22,19 @@ export default function LoginForm() {
   })
   useEffect(() => {
     if (loginErrors.message) {
-      
+  
       setErrors({ message: null })
-      console.log('dss')
     }
   }, [watchedValues.email,watchedValues.password])
  
-  async function onSubmit(data) {
-    const { data: authData, error } = await Login(data.email, data.password)
-
-    console.log('auth', authData)
-    if (authData) {
+  async function onSubmit({email,password}) {
+    const {data:authData,error}=await mutateAsync({email,password})
+    if (authData?.user) {
       nav('/')
       dispatch(setCredentials(authData))
     }
     else {
+      console.log(error)
       const tempError = {
         message: error.message
       }
@@ -72,7 +74,7 @@ export default function LoginForm() {
           {loginErrors?.message}
         </div>
       }
-      <FormButton className="w-[60%]">
+      <FormButton disabled={isPending} className={isPending ? "w-[60%] bg-gray-500 hover:bg-gray-500" : "w-[60%]"}  >
         Sign in
       </FormButton>
     </form>
