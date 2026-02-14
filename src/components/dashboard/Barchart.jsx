@@ -2,6 +2,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 import { RechartsDevtools } from '@recharts/devtools';
 import { useQuery } from '@tanstack/react-query';
 import { getPageStats } from '../../api/getDashboardData/getpagestats';
+import Skeleton from "react-loading-skeleton";
 
 
 const SimpleBarChart = () => {
@@ -10,7 +11,11 @@ const SimpleBarChart = () => {
     queryFn:getPageStats
   })
   if(isLoading){
-    return <p className='flex-3'>loading...</p>
+    return (
+      <div className='p-4 rounded-2xl flex-[2] shadow-md max-w-5xl bg-gradient-to-r from-[#2f345a] to-[#0f1326]'>
+        <Skeleton height={280} baseColor="#3f466d" highlightColor="#56608f" />
+      </div>
+    )
   }
   return (
     <div className='bg-white p-4 rounded-2xl flex-[2] shadow-md max-w-5xl bg-gradient-to-r from-[#2f345a] to-[#0f1326]'>

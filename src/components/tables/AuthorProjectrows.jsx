@@ -3,6 +3,7 @@ import OnlineIcon from "../ui/OnlineIcon"
 import Avatar from '../../assets/Avatar.png'
 import { useQuery } from "@tanstack/react-query"
 import { getMembers } from "../../api/getDashboardData/getMembers"
+import Skeleton from "react-loading-skeleton"
 const states_mapping = {
     offline: OfflineIcon,
     online: OnlineIcon
@@ -15,7 +16,18 @@ export default function AuthorPorjectrows() {
         queryFn:getMembers
     })
     if(isLoading){
-        return <p>loading...</p>
+        return (
+            <>
+                {Array.from({ length: 5 }).map((_, idx) => (
+                    <tr key={`authors-skeleton-${idx}`}>
+                        <td><Skeleton height={48} /></td>
+                        <td><Skeleton height={48} /></td>
+                        <td><Skeleton height={48} /></td>
+                        <td><Skeleton height={48} /></td>
+                    </tr>
+                ))}
+            </>
+        )
     }
     return (
         <>

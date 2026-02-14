@@ -4,12 +4,13 @@ import { setCredentials, setisLoading, logout } from "./authSlice";
 import { getUser } from "../../utils/getUser";
 import { getUsers } from "../../api/auth/getAllUsers";
 import { useQuery } from "@tanstack/react-query";
+import Skeleton from "react-loading-skeleton";
 
 
 export default function AuthProvider({ children }) {
   const dispatch = useDispatch();
   const isLoading=useSelector(state =>state.auth.isLoading)
-  const {data,error}=useQuery({
+  const {data,error,isLoading:isUsersLoading}=useQuery({
     queryKey:['Users'],
     queryFn:getUsers
 })
@@ -31,8 +32,8 @@ console.log(data)
     checkUser();
   }, [dispatch]);
 
-  if(isLoading){
-    return <><p>Loading</p></>;
+  if(isLoading || isUsersLoading){
+    return <><Skeleton height={24} width={160} /></>;
   }
   else{
     return <>{children}</>;

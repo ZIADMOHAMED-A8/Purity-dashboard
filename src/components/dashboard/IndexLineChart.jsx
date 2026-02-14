@@ -2,6 +2,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } fro
 import Heading from "../ui/Heading";
 import { useQuery } from "@tanstack/react-query";
 import { getMonthlyStats } from "../../api/getDashboardData/getSales";
+import Skeleton from "react-loading-skeleton";
 
 
 export default function ChartCard() {
@@ -10,7 +11,12 @@ export default function ChartCard() {
     queryFn:getMonthlyStats
   })
   if(isLoading){
-    return <p className="flex-2">loading...</p>
+    return (
+      <div className="bg-white p-4 rounded-2xl flex-3 shadow-md max-w-5xl flex flex-col gap-6">
+        <Skeleton height={28} width={180} />
+        <Skeleton height={260} />
+      </div>
+    )
   }
   return (
     <div className="bg-white  p-4 rounded-2xl flex-3 shadow-md max-w-5xl flex flex-col gap-6  ">

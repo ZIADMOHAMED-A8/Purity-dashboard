@@ -6,6 +6,7 @@ import IncomingMoney from "./IncomingMoney";
 import DeductedMoney from "./DeductedMoney";
 import { useQuery } from "@tanstack/react-query";
 import { getTransactions } from "../../api/getDashboardData/getTransactions";
+import Skeleton from "react-loading-skeleton";
 const states_mapping = {
     pending: {
         icon: PendingTransaction,
@@ -27,7 +28,14 @@ export default function Transactions() {
         queryFn:getTransactions
     })
     if(isLoading){
-        return <p className="flex-2">loading...</p>
+        return (
+            <article className="flex-2 bg-white rounded-2xl p-6 flex flex-col gap-6">
+                <Skeleton height={28} width={140} />
+                {Array.from({ length: 4 }).map((_, idx) => (
+                    <Skeleton key={`transactions-skeleton-${idx}`} height={44} />
+                ))}
+            </article>
+        )
     }
     else{
     return (
