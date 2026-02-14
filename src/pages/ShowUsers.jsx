@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { getUsers } from "../api/auth/getAllUsers"
 import AdminRoute from "../routes/AdminRoute"
 import TableLayout from "../components/tables/TableLayout"
+import Skeleton from "react-loading-skeleton"
 
 export default function ShowUsers() {
     const { data, isLoading } = useQuery({
@@ -21,7 +22,16 @@ export default function ShowUsers() {
     if (isLoading) {
         return (
             <AdminRoute>
-                <p>Loading...</p>
+                <TableLayout title="Users" columns={columns} firstColumnWide={false}>
+                    {Array.from({ length: 5 }).map((_, idx) => (
+                        <tr key={`users-skeleton-${idx}`}>
+                            <td><Skeleton height={20} /></td>
+                            <td><Skeleton height={20} /></td>
+                            <td><Skeleton height={20} /></td>
+                            <td><Skeleton height={20} /></td>
+                        </tr>
+                    ))}
+                </TableLayout>
             </AdminRoute>
         )
     }

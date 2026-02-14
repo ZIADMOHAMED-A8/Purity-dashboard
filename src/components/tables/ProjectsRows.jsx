@@ -4,6 +4,7 @@ import ProjectsData from "../../utils/ProjectsData";
 import Avatars from "../ui/Avatars";
 import ProgressBar from "../ui/ProgressBar";
 import { getProjects } from "../../api/getDashboardData/getProjects";
+import Skeleton from "react-loading-skeleton";
 
 export default function ProjectsRows() {
   const {data,isLoading}=useQuery({
@@ -12,7 +13,16 @@ export default function ProjectsRows() {
   })
   if(isLoading){
     return (
-      <p>Loading...</p>
+      <>
+        {Array.from({ length: 5 }).map((_, idx) => (
+          <tr key={`projects-skeleton-${idx}`}>
+            <td><Skeleton height={20} /></td>
+            <td><Skeleton height={20} /></td>
+            <td><Skeleton height={20} /></td>
+            <td><Skeleton height={20} /></td>
+          </tr>
+        ))}
+      </>
     )
   }
     return (

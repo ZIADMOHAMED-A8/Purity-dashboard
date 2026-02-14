@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import toCurrencyConverter from "../../utils/CurrnecyAdder"
 import Heading from "../ui/Heading"
 import { getInvoices } from "../../api/getDashboardData/getInvoices"
+import Skeleton from "react-loading-skeleton"
 
 export default function Invoices() {
     const {data,isLoading}=useQuery({
@@ -10,7 +11,12 @@ export default function Invoices() {
     })
     if(isLoading){
         return (
-            <p className="flex-2">Loading...</p>
+            <article className='flex-2 flex gap-8 flex-col bg-white p-4 rounded-2xl'>
+                <Skeleton height={28} width={120} />
+                {Array.from({ length: 4 }).map((_, idx) => (
+                    <Skeleton key={`invoices-skeleton-${idx}`} height={36} />
+                ))}
+            </article>
         )
     }
     return (

@@ -10,6 +10,7 @@ import {
 import LabeldIcon from "../ui/LabeldIcon";
 import { useQuery } from "@tanstack/react-query";
 import { getNotifications } from "../../api/getDashboardData/getNotifications ";
+import Skeleton from "react-loading-skeleton";
 export default function OrdersReview(){
     const iconsMap = {
         Bell,
@@ -25,7 +26,12 @@ export default function OrdersReview(){
     })
     if(isLoading){
         return(
-            <p className="flex-2">loading...</p>
+            <article className="flex-2 rounded-2xl p-4 flex flex-col gap-6 bg-white">
+                <Skeleton height={28} width={160} />
+                {Array.from({ length: 4 }).map((_, idx) => (
+                    <Skeleton key={`orders-skeleton-${idx}`} height={24} />
+                ))}
+            </article>
         )
     }
     return (

@@ -15,6 +15,7 @@ import {
     buildUpdatePayload,
     prepareDraftRows,
 } from "../components/editdata/helpers";
+import Skeleton from "react-loading-skeleton";
 
 export default function Editdata() {
     const queryClient = useQueryClient();
@@ -96,7 +97,26 @@ export default function Editdata() {
     });
 
     if (isSalesLoading || isPageStatsLoading) {
-        return <p>Loading...</p>;
+        return (
+            <div className="flex flex-col gap-6">
+                <section className="rounded-2xl bg-white p-6 shadow-sm">
+                    <Skeleton height={28} width={180} />
+                    <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+                        {Array.from({ length: 6 }).map((_, idx) => (
+                            <Skeleton key={`edit-sales-skeleton-${idx}`} height={42} />
+                        ))}
+                    </div>
+                </section>
+                <section className="rounded-2xl bg-white p-6 shadow-sm">
+                    <Skeleton height={28} width={220} />
+                    <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+                        {Array.from({ length: 6 }).map((_, idx) => (
+                            <Skeleton key={`edit-page-skeleton-${idx}`} height={42} />
+                        ))}
+                    </div>
+                </section>
+            </div>
+        );
     }
 
     if (salesError || pageStatsError) {
