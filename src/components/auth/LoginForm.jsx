@@ -3,17 +3,16 @@ import FormField from "./FormField"
 import FormButton from "./FormButton"
 import { emailRules, passwordRules } from "./validationRules"
 import Login from "../../api/auth/Login"
-import { useDispatch } from "react-redux"
-import { setCredentials } from "../../features/auth/authSlice"
 import { useNavigate } from "react-router-dom"
 import { useState,useEffect } from "react"
 import { useMutation } from "@tanstack/react-query"
+import { queryClient } from "../../main"
+
 export default function LoginForm() {
   const { watch, handleSubmit, formState: { errors }, register } = useForm()
   const { mutateAsync,isPending  } = useMutation({
     mutationFn:Login
   })
-  const dispatch = useDispatch()
   const nav = useNavigate()
   const watchedValues = watch()
   console.log(watchedValues)
@@ -30,8 +29,8 @@ export default function LoginForm() {
   async function onSubmit({email,password}) {
     const {data:authData,error}=await mutateAsync({email,password})
     if (authData?.user) {
+      queryClient.setQueryData(['getUser'],authData)
       nav('/')
-      dispatch(setCredentials(authData))
     }
     else {
       console.log(error)

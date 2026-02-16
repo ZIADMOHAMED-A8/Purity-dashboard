@@ -1,11 +1,21 @@
 import bg from '../../assets/bg.png'
 import Avatar from '../../assets/avatar.png'
 import { useSelector } from 'react-redux'
+import Skeleton from 'react-loading-skeleton'
+import { useQuery } from '@tanstack/react-query'
+import { getUser } from '../../utils/getUser'
 
 
 export default function ProfileBanner() {
-    const user=useSelector(state =>state.auth.user)
-    console.log('user',user)
+    const {data,isLoading}=useQuery({
+        queryKey:['getUser'],
+        queryFn:getUser
+      })
+      if(isLoading ){
+        return <><Skeleton height={24} width={160} /></>;
+      }
+      else{
+
     return (
         <>
             <article>
@@ -20,8 +30,10 @@ export default function ProfileBanner() {
                                     <img src={Avatar} className='w-[64px] h-[64px]'></img>
                                 </div>
                                 <div>
-                                    <h1 className='font-bold text-xl capitalize'>({user?.user_metadata?.role}) {user.user_metadata.first_name}</h1>
-                                    <p className='text-gray-400 -mt-1 text-sm'>{user.email}</p>
+                                    <h1 className='font-bold text-xl capitalize'>{data?.data?.user?.user_metadata?.role === 'admin' 
+                                    ? (`Admin ${data?.data?.user.user_metadata.first_name}`) 
+                                    : data?.data?.user.user_metadata.first_name}</h1>
+                                    <p className='text-gray-400 -mt-1 text-sm'>{data?.data?.user.email}</p>
                                 </div>
                             </div>
                             <div>
@@ -32,5 +44,5 @@ export default function ProfileBanner() {
                 </div>
             </article>
         </>
-    )
+    )}
 }
