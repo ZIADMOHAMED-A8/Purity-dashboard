@@ -15,7 +15,6 @@ export default function LoginForm() {
   })
   const nav = useNavigate()
   const watchedValues = watch()
-  console.log(watchedValues)
   const [loginErrors, setErrors] = useState({
     message: null
   })
