@@ -2,10 +2,13 @@ import { Home, BarChart3, CreditCard, User, FileText, Rocket, LogOut } from "luc
 import SidebarElement from "./sidebarElement";
 import { useSelector } from "react-redux";
 import logout from "../../utils/logout";
-
+import { useQuery } from "@tanstack/react-query";
+import { getUser } from "../../utils/getUser";
 export default function Sidebar() {
-  const isAuth = useSelector((state) => state.auth.isAuthednticated)
-  const isAdmin = useSelector(state => state.auth.isAdmin)
+  const {data,isLoading}=useQuery({
+    queryKey:['getUser'],
+    queryFn:getUser
+  })
   const menuItems = [
     { label: "Dashboard", icon: Home },
     { label: "Tables", icon: BarChart3 },
@@ -43,10 +46,10 @@ export default function Sidebar() {
       </ul>
       <ul className="flex flex-col gap-2 w-full">
         <h1 className="text-sm sm:text-base font-medium p-4 py-2 opacity-0 sm:opacity-0 group-hover/side:opacity-100 duration-300 uppercase">Account Pages</h1>
-        {isAuth === false && menu2Items.splice(2, 4).map((e, index) =>
+        {!data?.data?.user && menu2Items.splice(2, 4).map((e, index) =>
           <SidebarElement key={index} Icon={e.icon} label={e.label} isLogout={e.label==='Log out'}></SidebarElement>
         )}
-        {isAuth && menu2Items.splice(0, 2).map((e, index) =>
+        {data?.data?.user && menu2Items.splice(0, 2).map((e, index) =>
           <SidebarElement key={index} Icon={e.icon} label={e.label} isLogout={e.label==='Log out'}></SidebarElement>
         )}
        

@@ -8,10 +8,13 @@ import OTPInput from "react-otp-input"
 import { useState, useEffect } from "react"
 import FormButton from "../../components/auth/FormButton"
 import { setCredentials } from "../../features/auth/authSlice"
-import { useMutation } from "@tanstack/react-query"
+
+import {  useMutation } from "@tanstack/react-query"
 import verifyOTP from "../../api/auth/VerifyOTP"
+import { queryClient } from "../../main"
 
 export default function OtpPage() {
+  
   const nav = useNavigate()
   const dispatch = useDispatch()
   const {mutateAsync}=useMutation({
@@ -27,10 +30,10 @@ export default function OtpPage() {
 
 
     if (authData?.user) {
+      queryClient.setQueryData(['getUser'], authData)
 
-      dispatch(setCredentials(authData));
+
       nav("/profile")
-      console.log("you're registered")
     }
     else if (error) {
       setotpErrors(error)
