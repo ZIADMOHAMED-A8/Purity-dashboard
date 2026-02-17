@@ -3,6 +3,8 @@ import SidebarElement from "./sidebarElement";
 import { useSelector } from "react-redux";
 import logout from "../../utils/logout";
 import { useQuery } from "@tanstack/react-query";
+import { MenuIcon } from "lucide-react";
+
 import { getUser } from "../../utils/getUser";
 export default function Sidebar() {
   const {data,isLoading}=useQuery({
@@ -23,9 +25,13 @@ export default function Sidebar() {
 
   ]
   return (
-    <aside className="flex sticky flex-col pl-8 group/side items-start w-[60px] sm:w-[10px] hover:w-[200px] sm:hover:w-[200px]   
-      left-0 top-0 h-screen bg-white sm:bg-transparent z-40 sm:z-auto
-    shadow-lg sm:shadow-none transition-all duration-200">
+    <>
+    <aside className=" sticky flex-col pl-8 pt-4 group/side items-start w-[60px] hidden  md:flex
+ hover:w-[200px]   
+      left-0 top-0 h-[calc(100vh-32px)] bg-white sm:bg-transparent z-40 sm:z-auto
+    shadow-lg sm:shadow-none transition-all duration-200
+    
+    ">
       <h1 className="text-xl font-medium uppercase pb-4 opacity-0 sm:opacity-0 border-b border-transparent
       group-hover/side:opacity-100 duration-300 
       bg-gradient-to-r from-transparent via-gray-300 to-transparent
@@ -52,9 +58,12 @@ export default function Sidebar() {
         {data?.data?.user && menu2Items.splice(0, 2).map((e, index) =>
           <SidebarElement key={index} Icon={e.icon} label={e.label} isLogout={e.label==='Log out'}></SidebarElement>
         )}
-       
+
 
       </ul>
     </aside>
+               <MenuIcon color='#4fd1c5' className="md:hidden"></MenuIcon>
+               </>
+
   );
 }

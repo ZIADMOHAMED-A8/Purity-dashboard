@@ -6,7 +6,6 @@ export default function InfoSection(){
     return (
         <>
             <FeatureCards><InfoCard></InfoCard>
-            <WealthCard></WealthCard>
             </FeatureCards>
         </>
     )

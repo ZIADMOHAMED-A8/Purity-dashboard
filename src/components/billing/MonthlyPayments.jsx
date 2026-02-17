@@ -1,11 +1,12 @@
+import FeatureCards from "../dashboard/FeautureCards";
 import Invoices from "./Invoices";
 import PaymentMethod from "./PaymentMethod";
 
 export default function MonthlyPayments(){
     return (
-        <div className="flex gap-6  ">
+        <FeatureCards>
         <PaymentMethod></PaymentMethod>
         <Invoices></Invoices>
-        </div>
+        </FeatureCards>
     )
 }
