@@ -1,11 +1,12 @@
+import FeatureCards from "../dashboard/FeautureCards";
 import BillingInfo from "./BillingInfo";
 import Transactions from "./Transactions";
 
 export default function () {
     return (
-        <div className="flex gap-6 ">
+        <FeatureCards>
             <BillingInfo></BillingInfo>
             <Transactions></Transactions>
-        </div>
+        </FeatureCards>
     )
 }

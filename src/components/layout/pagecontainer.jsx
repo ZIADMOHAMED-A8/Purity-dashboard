@@ -2,6 +2,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Heading from "../ui/Heading";
 import { useEffect } from "react";
+import ProtectedRoute from "../auth/ProtectedRoute";
 
 export default function Pagecontainer({children}){
     const location=useLocation();
@@ -15,7 +16,7 @@ export default function Pagecontainer({children}){
         nav('dashboard')
     },[])
     return (
-        <>
+        <ProtectedRoute>
             <div className="p-4 sm:p-6 md:p-8 pl-0 sm:pl-0 md:pl-0  flex flex-col  sm:flex-row gap-4 sm:gap-8 md:gap-12 lg:gap-20 ml-[60px] sm:ml-0">
                 <Sidebar></Sidebar>
                 
@@ -27,6 +28,6 @@ export default function Pagecontainer({children}){
                 </div>
                 
             </div>
-        </>
+            </ProtectedRoute>
     )
 }

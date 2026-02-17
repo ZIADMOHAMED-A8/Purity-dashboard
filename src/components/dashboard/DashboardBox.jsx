@@ -9,12 +9,12 @@ export default function DashboardBox({label,Icon,stats='2000'}){
             <p className="text-gray-600 text-xs sm:text-sm md:text-[clamp(11px,1.2vw,14px)] whitespace-nowrap truncate">{label}</p>
             <p className="font-bold text-base sm:text-lg md:text-xl">{stats}</p>
             </div>
-            {!isTablet && 
-            <div className="bg-[#4fd1c5] p-2 sm:p-3 rounded-xl flex-shrink-0 ml-2">
+            
+            <div className="bg-[#4fd1c5] p-2 sm:p-3 rounded-xl  ml-2">
             <Icon color={'white'} size={24} className="sm:w-[30px] sm:h-[30px]"></Icon>
             </div>
             
-            }
+           
             </div>
         </>
     )

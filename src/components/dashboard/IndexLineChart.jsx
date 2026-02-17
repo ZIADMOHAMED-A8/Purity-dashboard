@@ -19,11 +19,12 @@ export default function ChartCard() {
     )
   }
   return (
-    <div className="bg-white  p-4 rounded-2xl flex-3 shadow-md max-w-5xl flex flex-col gap-6  ">
+    <div className="bg-white min-h-[600px]  p-4 rounded-2xl flex-3 shadow-md max-w-5xl flex flex-col gap-6  ">
       <Heading>Sales overview</Heading>
 
       <div className="w-full h-full">
-        <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="100%">
+
           <LineChart data={data}>
 
             {/* <CartesianGrid strokeDasharray="3 3" className="opacity-30" /> */}
