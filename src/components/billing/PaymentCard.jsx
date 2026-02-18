@@ -1,10 +1,9 @@
-import { Wallet, Globe, FileText, ShoppingCart } from "lucide-react";
 
 
 export default function PaymentCard({Icon,label,desc,amount}){
     return (
         <>
-            <article className="p-4 flex flex-col gap-1 bg-white items-center rounded-2xl p-4">
+            <article className="flex-col gap-1 hidden md:flex bg-white items-center rounded-2xl p-4">
                 <div className="bg-[#4fd1c5] rounded-xl p-5">
                 <Icon size={30} className="text-white  " />
                 </div>

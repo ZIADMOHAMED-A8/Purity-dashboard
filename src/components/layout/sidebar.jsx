@@ -1,69 +1,70 @@
 import { Home, BarChart3, CreditCard, User, FileText, Rocket, LogOut } from "lucide-react";
 import SidebarElement from "./sidebarElement";
-import { useSelector } from "react-redux";
-import logout from "../../utils/logout";
 import { useQuery } from "@tanstack/react-query";
-import { MenuIcon } from "lucide-react";
-
 import { getUser } from "../../utils/getUser";
+import MobileSidebar from "./mobilesidebar";
+
 export default function Sidebar() {
-  const {data,isLoading}=useQuery({
-    queryKey:['getUser'],
-    queryFn:getUser
-  })
+  const { data } = useQuery({
+    queryKey: ["getUser"],
+    queryFn: getUser,
+  });
+
   const menuItems = [
     { label: "Dashboard", icon: Home },
     { label: "Tables", icon: BarChart3 },
     { label: "Billing", icon: CreditCard },
-
   ];
-  const menu2Items = [
-    { label: 'Profile', icon: User },
-    { label: 'Log out', icon: LogOut },
-    { label: 'Sign in', icon: FileText },
-    { label: 'Sign up', icon: Rocket },
 
-  ]
+  const accountItems = [
+    { label: "Profile", icon: User },
+    { label: "Log out", icon: LogOut },
+    { label: "Sign in", icon: FileText },
+    { label: "Sign up", icon: Rocket },
+  ];
+
+  const isAuthenticated = Boolean(data?.data?.user);
+  const visibleAccountItems = isAuthenticated
+    ? accountItems.slice(0, 2)
+    : accountItems.slice(2, 4);
+
   return (
     <>
-    <aside className=" sticky flex-col pl-8 pt-4 group/side items-start w-[60px] hidden  md:flex
- hover:w-[200px]   
-      left-0 top-0 h-[calc(100vh-32px)] bg-white sm:bg-transparent z-40 sm:z-auto
-    shadow-lg sm:shadow-none transition-all duration-200
-    
-    ">
-      <h1 className="text-xl font-medium uppercase pb-4 opacity-0 sm:opacity-0 border-b border-transparent
-      group-hover/side:opacity-100 duration-300 
-      bg-gradient-to-r from-transparent via-gray-300 to-transparent
-      bg-no-repeat
-      [background-size:100%_1px]
-      [background-position:0_100%] text-center whitespace-nowrap text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl">
-        Purity Dashboard
-      </h1>
-      <ul className="flex flex-col gap-3 sm:gap-5 py-4 w-full">
-        {menuItems.map((item, index) => (
-          <SidebarElement
-            key={index}
-            Icon={item.icon}
-            label={item.label}
-            
-          />
-        ))}
-      </ul>
-      <ul className="flex flex-col gap-2 w-full">
-        <h1 className="text-sm sm:text-base font-medium p-4 py-2 opacity-0 sm:opacity-0 group-hover/side:opacity-100 duration-300 uppercase">Account Pages</h1>
-        {!data?.data?.user && menu2Items.splice(2, 4).map((e, index) =>
-          <SidebarElement key={index} Icon={e.icon} label={e.label} isLogout={e.label==='Log out'}></SidebarElement>
-        )}
-        {data?.data?.user && menu2Items.splice(0, 2).map((e, index) =>
-          <SidebarElement key={index} Icon={e.icon} label={e.label} isLogout={e.label==='Log out'}></SidebarElement>
-        )}
+      <aside
+        className="group/side sticky left-0 top-0 z-40 hidden h-[100vh] w-[100px] flex-col items-start pl-8 pt-8 transition-all duration-200 hover:w-[250px] md:flex"
+      >
+        <h1
+          className="border-b border-transparent bg-gradient-to-r from-transparent via-gray-300 to-transparent bg-no-repeat pb-4 text-center text-xs font-medium uppercase whitespace-nowrap opacity-0 [background-position:0_100%] [background-size:100%_1px] duration-300 group-hover/side:opacity-100 sm:text-sm md:text-base lg:text-lg xl:text-xl"
+        >
+          Purity Dashboard
+        </h1>
 
+        <ul className="flex w-full flex-col gap-3 py-4 sm:gap-5">
+          {menuItems.map((item) => (
+            <SidebarElement key={item.label} Icon={item.icon} label={item.label} />
+          ))}
+        </ul>
 
-      </ul>
-    </aside>
-               <MenuIcon color='#4fd1c5' className="md:hidden"></MenuIcon>
-               </>
+        <ul className="flex w-full flex-col gap-2">
+          <h1 className="p-4 py-2 text-sm font-medium uppercase opacity-0 duration-300 group-hover/side:opacity-100 sm:text-base">
+            Account Pages
+          </h1>
+          {visibleAccountItems.map((item) => (
+            <SidebarElement
+              key={item.label}
+              Icon={item.icon}
+              label={item.label}
+              isLogout={item.label === "Log out"}
+            />
+          ))}
+        </ul>
+      </aside>
 
+      <MobileSidebar
+        menuItems={menuItems}
+        accountItems={accountItems}
+        isAuthenticated={isAuthenticated}
+      />
+    </>
   );
 }

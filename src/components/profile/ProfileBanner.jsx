@@ -15,7 +15,7 @@ export default function ProfileBanner() {
         return <><Skeleton height={24} width={160} /></>;
       }
       else{
-
+        const userData=data?.data?.user?.user_metadata
     return (
         <>
             <article>
@@ -30,9 +30,9 @@ export default function ProfileBanner() {
                                     <img src={Avatar} className='w-[64px] h-[64px]'></img>
                                 </div>
                                 <div>
-                                    <h1 className='font-bold text-xl capitalize'>{data?.data?.user?.user_metadata?.role === 'admin' 
-                                    ? (`Admin ${data?.data?.user.user_metadata.first_name}`) 
-                                    : data?.data?.user.user_metadata.first_name}</h1>
+                                    <h1 className='font-bold text-xl capitalize'>{userData?.role === 'admin' 
+                                    ? (`Admin ${userData?.first_name}`) 
+                                    : userData?.first_name}</h1>
                                     <p className='text-gray-400 -mt-1 text-sm'>{data?.data?.user.email}</p>
                                 </div>
                             </div>

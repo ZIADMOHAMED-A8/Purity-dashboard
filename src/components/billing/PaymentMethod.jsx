@@ -16,22 +16,22 @@ export default function PaymentMethod() {
     return (
 
         <article className='flex-3 flex gap-10 flex-col '>
-            <div className='flex  gap-10 items-center'>
+            <div className='flex  gap-0 md:gap-10 items-center'>
                 <div className='flex-2'><Cards
                     number={watch("CardNumber")}
                     expiry={toexpiry(watch('Expiry'))}
                     cvc={watch('CVV')}
                     name={'Ziad'}
                 ></Cards></div>
-                <p className='flex-1'><PaymentCard Icon={Wallet} label={'Salary'} amount={'+$2000'} desc={'Belong interactive'}></PaymentCard></p>
-                <p className='flex-1'><PaymentCard Icon={Wallet} label={'Paypal'} amount={'+$2000'} desc={'Freelancing Income'}></PaymentCard></p>
+                <p className='md:flex-1'><PaymentCard Icon={Wallet} label={'Salary'} amount={'+$2000'} desc={'Belong interactive'}></PaymentCard></p>
+                <p className='md:flex-1'><PaymentCard Icon={Wallet} label={'Paypal'} amount={'+$2000'} desc={'Freelancing Income'}></PaymentCard></p>
 
 
             </div>
             <article className='bg-white w-full p-4 rounded-2xl'>
                 <div className='flex justify-between items-center mb-4'>
                     <Heading>Payment method</Heading>
-                    <button form='payment-form' className='bg-linear-to-r from-[#2f345a] to-[#0f1326] p-4 rounded-2xl text-white uppercase font-medium cursor-pointer'>Add a new card</button>
+                    <button form='payment-form' className='bg-linear-to-r from-[#2f345a] to-[#0f1326] p-4 text-[clamp(0.5rem,1rem)] rounded-2xl text-white uppercase font-medium cursor-pointer'>Add a new card</button>
                 </div>
                 <AddingCardForm register={register}
                     handleSubmit={handleSubmit}

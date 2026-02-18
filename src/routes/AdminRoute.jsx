@@ -11,10 +11,11 @@ export default function AdminRoute({ children }) {
     })
     if (data?.data?.user?.user_metadata?.role === 'admin') {
 
-        return (<>
+        return (
+            <>
 
-            {children}
-        </>
+                {children}
+            </>
 
         )
     }

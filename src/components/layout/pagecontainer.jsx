@@ -17,10 +17,10 @@ export default function Pagecontainer({children}){
     },[])
     return (
         <ProtectedRoute>
-            <div className="p-4 sm:p-6 md:p-8 pl-0 sm:pl-0 md:pl-0  flex flex-col  sm:flex-row gap-4 sm:gap-8 md:gap-12 lg:gap-20 ml-[60px] sm:ml-0">
+            <div className="  pl-0 pt-0 flex flex-row gap-4 sm:gap-4 md:gap-6 lg:gap-10  ">
                 <Sidebar></Sidebar>
                 
-                <div className='flex w-full  flex-col gap-6 sm:gap-8 md:gap-4'>
+                <div className='flex w-full  px-2 sm:px-4 pt-8 lg:px-4 md:px-4 flex-col gap-6 sm:gap-8 md:gap-4'>
                 
                 <p className="text-gray-400 ">Pages<span>/</span><span className="text-black font-medium capitalize">{PageName}</span></p>
                 <Heading>{PageName}</Heading>

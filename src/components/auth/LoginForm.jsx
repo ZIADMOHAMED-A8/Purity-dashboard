@@ -8,7 +8,7 @@ import { useState,useEffect } from "react"
 import { useMutation } from "@tanstack/react-query"
 import { queryClient } from "../../main"
 
-export default function LoginForm() {
+export default function LoginForm({...props}) {
   const { watch, handleSubmit, formState: { errors }, register } = useForm()
   const { mutateAsync,isPending  } = useMutation({
     mutationFn:Login
@@ -43,8 +43,8 @@ export default function LoginForm() {
 
   return (
     <form
+    {...props}
       onSubmit={handleSubmit(onSubmit)}
-      className="[&>div>input]:border [&>div>input]:border-gray-300 [&>div>input]:rounded-xl w-xl [&>div>input]:p-2 flex flex-col gap-8 items-start"
     >
       <FormField
         label="Email"
