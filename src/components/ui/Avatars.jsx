@@ -15,7 +15,7 @@ export default function Avatars(){
     <img
       key={i}
       src={src}
-      className="w-8 h-8 rounded-full border-2 border-white relative z-10"
+      className="relative z-10 h-7 w-7 rounded-full border-2 border-white sm:h-8 sm:w-8"
       style={{ zIndex: avatars.length - i }}
       alt=""
     />

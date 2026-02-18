@@ -29,9 +29,9 @@ export default function ProjectsRows() {
       <>
         {ProjectsData.map(e => (
           <tr key={e.id}>
-            <td className="text-l w-[50%] font-bold">{e.name}</td>
+            <td className="w-[50%] font-bold text-sm sm:text-base">{e.name}</td>
             <td><Avatars /></td>
-            <td className="text-l font-bold">
+            <td className="font-bold text-sm sm:text-base whitespace-nowrap">
               {toCurrencyConverter(e.budget)}
             </td>
             <td>
