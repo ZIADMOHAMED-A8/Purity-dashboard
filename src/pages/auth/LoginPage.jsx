@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import shakra from '../../assets/chakra.png'
 import LoginForm from '../../components/auth/LoginForm'
 import PublicRoute from '../../components/auth/PublicRoute'
@@ -21,6 +22,8 @@ export default function LoginPage() {
                             "[&>div>input]:border [&>div>input]:border-gray-300 [&>div>input]:rounded-xl w-xl [&>div>input]:p-2 flex flex-col gap-8  items-center"
                         }></LoginForm>
                         <p className='my-2'>Don't have an account? <Link className='text-[#4fd1c5]' to='/sign up'>Sign up</Link></p>
+                        
+
 
                     </div>
 
