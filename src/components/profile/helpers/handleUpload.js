@@ -1,12 +1,14 @@
-import { supabase } from '../../../../supabaseClient'
-import { queryClient } from '../../../main'
+
 
 
 export const handleUpload = async (e,data) => {
     const user=data.data.user
     const file = e.target.files[0]
+    if(!file || !file.type.startsWith('image/')){
+      throw new Error('not an image')
+    }
   
-    if (!file) return
+    
   
     const fileExt = file.name.split('.').pop()
     const fileName = `${user.id}/${crypto.randomUUID()}.${fileExt}`
@@ -31,4 +33,5 @@ export const handleUpload = async (e,data) => {
         }
       })
       queryClient.invalidateQueries({queryKey:['getUser']})
+      return udata.publicUrl
     }
