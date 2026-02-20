@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import ShowUsers from "../pages/ShowUsers";
 import Editdata from "../pages/Editdata";
 import AdminRoute from "./AdminRoute";
+import ProfilePage from "../pages/ProfilePage";
 
 export default function DashboardRoutes() {
     const email = useSelector(state => state.register.email)
@@ -23,7 +24,7 @@ export default function DashboardRoutes() {
                     <Route path="dashboard" element={<DashBoardPage></DashBoardPage>}></Route>
                     <Route path="billing" element={<BillingPage></BillingPage>}></Route>
                     <Route path="Tables" element={<TablesPage></TablesPage>}></Route>
-                    <Route path="profile" element={<ProfileBanner></ProfileBanner>}></Route>
+                    <Route path="profile" element={<ProfilePage></ProfilePage>}></Route>
                     <Route path="showusers" element={<ShowUsers></ShowUsers>}></Route>
                     <Route path="edit" element={<AdminRoute><Editdata></Editdata></AdminRoute>}></Route>
 
