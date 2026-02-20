@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import logout from "../../utils/logout"
-export default function SidebarElement({label,Icon,isLogout}){
-    const togo=label
+export default function SidebarElement({label,Icon,isLogout,route}){
+    const togo=route
     if(!isLogout){
     return (
         <>
