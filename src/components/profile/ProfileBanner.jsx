@@ -1,12 +1,9 @@
 import bg from '../../assets/bg.png'
 import Avatar from '../../assets/avatar.png'
-import { useSelector } from 'react-redux'
 import Skeleton from 'react-loading-skeleton'
 import { useQuery } from '@tanstack/react-query'
 import { getUser } from '../../utils/getUser'
 import { Pen } from 'lucide-react'
-import { supabase } from '../../../supabaseClient'
-import { handleUpload } from './helpers/handleUpload'
 import useUploadPic from './helpers/useUploadpic'
 export default function ProfileBanner() {
     const { data, isLoading } = useQuery({
@@ -31,14 +28,14 @@ export default function ProfileBanner() {
          border border-white/30  rounded-2xl p-4  '>
                             <div>
                                 <div className='flex gap-6 items-center'>
-                                    <div className='bg-linear-to-r relative from-[#2f345a] to-[#0f1326] rounded-2xl  w-[64px] h-[64px] '>
+                                    <div className='bg-white rounded-2xl  w-[64px] h-[64px] '>
                                         <img src={userData.avatar_url || Avatar} className='w-[64px] h-[64px] rounded-2xl'></img>
                                             <input type='file' accept='image/*' onChange={async(e)=>{
                                                   const file = e.target.files?.[0]
                                                   if (!file) return
                                                 await mutateAsync({file,data})
                                             }} id="uploadphoto" className='hidden '></input>
-                                            <label className=' p-2 rounded-xl bg-white absolute -bottom-2 left-[46px]' htmlFor="uploadphoto">
+                                            <label className=' p-2 rounded-xl bg-white absolute bottom-[10px] left-[64px]' htmlFor="uploadphoto">
                                                 <Pen size={16} color={'#4fd1c5'}></Pen>
                                             </label>
                                     </div>
