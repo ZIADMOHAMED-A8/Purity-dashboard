@@ -1,4 +1,4 @@
-import  image from '../../assets/image.png'
+import image from '../../assets/Image.png'
 export default function InfoCard(){
     return (
         <>

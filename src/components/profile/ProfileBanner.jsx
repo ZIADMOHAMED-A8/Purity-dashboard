@@ -1,5 +1,5 @@
 import bg from '../../assets/bg.png'
-import Avatar from '../../assets/avatar.png'
+import Avatar from '../../assets/Avatar.png'
 import Skeleton from 'react-loading-skeleton'
 import { useQuery } from '@tanstack/react-query'
 import { getUser } from '../../utils/getUser'
