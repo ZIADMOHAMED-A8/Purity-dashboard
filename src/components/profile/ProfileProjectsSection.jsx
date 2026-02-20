@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query"
+import Skeleton from "react-loading-skeleton";
+import placeholder from "../../assets/Image.png";
 import { getUser } from "../../utils/getUser";
-import { supabase } from "../../../supabaseClient";
+import ProjectCreateModal from "./ProjectCreateModal";
+import { onCreateProject } from "./onCreateProject";
 
 export default function ProfileProjectsSection() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -51,52 +54,18 @@ export default function ProfileProjectsSection() {
         setPreviewUrl("");
         reset();
     }
-    async function onCreateProject(values) {
-        const prev = [...projects];
-      
-        const id = crypto.randomUUID();
-      
-        const optiProject = {
-          id,
-          tag: `Project #${projects.length + 1}`,
-          title: values.title.trim(),
-          description: values.description.trim(),
-          image: previewUrl || placeholder,
-        };
-      
-        setProjects((p) => [...p, optiProject]);
-        const file=watchedPhoto?.[0]
-        closeModal();
-      
-        try {
-          const { data: storageData, error: storageError } = await supabase.storage
-            .from("avatars")
-            .upload(`project_${id}`, file);
-      
-          if (storageError) throw storageError;
-      
-          const { data: publicUrlData } = supabase.storage
-            .from("avatars")
-            .getPublicUrl(storageData.path);
-      
-          const newProject = {
-            ...optiProject,
-            image: publicUrlData.publicUrl,
-          };
-      
-          const updatedProjects = [...prev, newProject];
-      
-          await supabase.auth.updateUser({
-            data: { projects: updatedProjects },
-          });
-      
-          setProjects(updatedProjects);
-      
-        } catch (e) {
-          setProjects(prev);
-        }
-      }
-      
+    async function handleCreateProject(values) {
+        await onCreateProject({
+            values,
+            projects,
+            setProjects,
+            previewUrl,
+            watchedPhoto,
+            closeModal,
+            placeholder,
+        });
+    }
+
     if (isLoading) {
         return <><Skeleton height={24} width={160} /></>;
     }
@@ -139,93 +108,15 @@ export default function ProfileProjectsSection() {
                 </div>
             </section>
 
-            {isModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 px-4">
-                    <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl">
-                        <div className="mb-5 flex items-center justify-between">
-                            <h3 className="text-xl font-bold text-slate-800">Create Project</h3>
-                            <button
-                                type="button"
-                                onClick={closeModal}
-                                className="rounded-lg px-2 py-1 text-slate-500 hover:bg-slate-100"
-                            >
-                                X
-                            </button>
-                        </div>
-
-                        <form className="space-y-4" onSubmit={handleSubmit(onCreateProject)}>
-                            <div>
-                                <label className="mb-1 block text-sm font-semibold text-slate-700">Photo</label>
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    className="w-full rounded-lg border border-slate-300 p-2 text-sm"
-                                    {...register("photo", {
-                                        required: "Project photo is required",
-                                    })}
-                                />
-                                {errors.photo && (
-                                    <p className="mt-1 text-xs text-red-500">{errors.photo.message}</p>
-                                )}
-                            </div>
-
-                            {previewUrl && (
-                                <img
-                                    src={previewUrl}
-                                    alt="Project preview"
-                                    className="h-36 w-full rounded-xl object-cover"
-                                />
-                            )}
-
-                            <div>
-                                <label className="mb-1 block text-sm font-semibold text-slate-700">Title</label>
-                                <input
-                                    type="text"
-                                    className="w-full rounded-lg border border-slate-300 p-2 text-sm outline-none focus:border-cyan-400"
-                                    placeholder="Enter title"
-                                    {...register("title", {
-                                        required: "Title is required",
-                                    })}
-                                />
-                                {errors.title && (
-                                    <p className="mt-1 text-xs text-red-500">{errors.title.message}</p>
-                                )}
-                            </div>
-
-                            <div>
-                                <label className="mb-1 block text-sm font-semibold text-slate-700">Description</label>
-                                <textarea
-                                    rows={4}
-                                    className="w-full rounded-lg border border-slate-300 p-2 text-sm outline-none focus:border-cyan-400"
-                                    placeholder="Enter description"
-                                    {...register("description", {
-                                        required: "Description is required",
-                                    })}
-                                />
-                                {errors.description && (
-                                    <p className="mt-1 text-xs text-red-500">{errors.description.message}</p>
-                                )}
-                            </div>
-
-                            <div className="flex justify-end gap-3 pt-2">
-                                <button
-                                    type="button"
-                                    onClick={closeModal}
-                                    className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700"
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-white hover:bg-cyan-600"
-                                >
-                                    Create Project
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
+            <ProjectCreateModal
+                isOpen={isModalOpen}
+                closeModal={closeModal}
+                handleSubmit={handleSubmit}
+                onSubmit={handleCreateProject}
+                register={register}
+                errors={errors}
+                previewUrl={previewUrl}
+            />
         </>
     );
 }
