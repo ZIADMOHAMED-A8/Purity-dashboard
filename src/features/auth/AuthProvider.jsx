@@ -1,14 +1,9 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setCredentials, setisLoading} from "./authSlice";
 import { getUser } from "../../utils/getUser";
-import { getUsers } from "../../api/auth/getAllUsers";
 import { useQuery } from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
 
 
 export default function AuthProvider({ children }) {
-  const dispatch = useDispatch();
   const {data,isLoading}=useQuery({
     queryKey:['getUser'],
     queryFn:getUser

@@ -24,7 +24,7 @@ export default function FormField({
         {...register(name, rules)}
         className={inputBaseClass}
       />
-      <div className="text-red-400 block max-w-[300px]   text-xs">
+      <div className="text-red-400 block  text-center   text-xs">
         {error?.message}
       </div>
 
