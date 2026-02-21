@@ -1,7 +1,8 @@
-import { useIsTablet } from "../../hooks/isTablet"
+import useBreakpoints from "../../hooks/useBreakpoints";
 
+useBreakpoints
 export default function DashboardBox({label,Icon,stats='2000'}){
-    const isTablet=useIsTablet();
+    const {isTablet}=useBreakpoints();
     return (
         <>
             <div className="flex-1 min-w-[140px] sm:min-w-[160px] md:basis-1/4 flex p-3 sm:p-4 justify-between rounded-xl h-fit items-center bg-white shadow-sm hover:shadow-md transition-shadow">

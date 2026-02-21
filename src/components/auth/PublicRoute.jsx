@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { useQuery } from "@tanstack/react-query";

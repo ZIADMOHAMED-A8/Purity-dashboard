@@ -9,7 +9,6 @@ export default async function Signup({email, password, name}) {
                 data: {
                     first_name: name,
                 },
-
             }
         }
     )

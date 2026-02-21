@@ -4,8 +4,6 @@ import FormButton from "./FormButton"
 import { emailRules, passwordRules, nameRules } from "./validationRules"
 import Signup from "../../api/auth/SignUp"
 import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
-import { addEmail } from "../../features/auth/registerSlice"
 import { useState } from "react"
 import { useMutation } from "@tanstack/react-query"
 
@@ -14,22 +12,17 @@ export default function SignupForm() {
   const {mutateAsync,isPending}=useMutation({
     mutationFn:Signup
   })
-  const dispatch = useDispatch()
-  const [otpErrors, setotpErrors] = useState([])
+  const [signupErrors, setsignupErrors] = useState([])
   const nav = useNavigate()
   async function onSubmit({ email, password, Name }) {
     let {data:authData,error} = await mutateAsync({email, password, name:Name})
-  
     if (authData?.user) {
-      console.log('tmm')
-      dispatch(addEmail({
-        email
-      }))
+      sessionStorage.setItem('email',email)
       nav('/Otp')
     }
     else {  
       console.log
-      setotpErrors([
+      setsignupErrors([
 
         {message:error.message}
       ])
@@ -73,9 +66,9 @@ export default function SignupForm() {
         labelClassName="text-start"
       />
       <FormButton disabled={isPending} className={isPending ? "w-full bg-gray-500 hover:bg-gray-500" : "w-full"} >Sign Up</FormButton>
- {otpErrors[0]?.message &&
+ {signupErrors[0]?.message &&
          <div className="text-red-400">
-         {otpErrors[0].message}
+         {signupErrors[0].message}
        </div>
  }
     </form>

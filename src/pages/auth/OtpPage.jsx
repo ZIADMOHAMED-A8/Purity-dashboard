@@ -1,13 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import bg from "../../assets/bg.png"
 
-import PublicRoute from "../../components/auth/PublicRoute"
-import { useDispatch, useSelector } from "react-redux"
-import { removeEmail } from "../../features/auth/registerSlice"
 import OTPInput from "react-otp-input"
 import { useState, useEffect } from "react"
 import FormButton from "../../components/auth/FormButton"
-import { setCredentials } from "../../features/auth/authSlice"
 
 import {  useMutation } from "@tanstack/react-query"
 import verifyOTP from "../../api/auth/VerifyOTP"
@@ -16,13 +12,21 @@ import { queryClient } from "../../main"
 export default function OtpPage() {
   
   const nav = useNavigate()
-  const dispatch = useDispatch()
   const {mutateAsync}=useMutation({
     mutationFn:verifyOTP
   })
-  const email = useSelector((state) => state.register.email)
+  const email = sessionStorage.getItem('email')
   const [otpErrors, setotpErrors] = useState(null)
   const [otp, setOtp] = useState("")
+  useEffect(()=>{
+    if(!email)
+    {
+      window.location.href='/sign up'
+    }
+    return ()=>{
+      localStorage.removeItem("email")
+    }
+  })
   async function handleVerify() {
     if (otp.length !== 6) return
 

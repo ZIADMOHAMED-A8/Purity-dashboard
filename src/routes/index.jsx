@@ -9,14 +9,13 @@ import LoginPage from "../pages/auth/LoginPage";
 import SignupPage from "../pages/auth/SignupPage";
 import OtpPage from "../pages/auth/OtpPage";
 import ProfileBanner from "../components/profile/ProfileBanner";
-import { useSelector } from "react-redux";
 import ShowUsers from "../pages/ShowUsers";
 import Editdata from "../pages/Editdata";
 import AdminRoute from "./AdminRoute";
 import ProfilePage from "../pages/ProfilePage";
 
 export default function DashboardRoutes() {
-    const email = useSelector(state => state.register.email)
+    const email = sessionStorage.getItem("email")
     return (
         <>
             <Routes>
@@ -35,7 +34,7 @@ export default function DashboardRoutes() {
                 <Route
                     path="/otp"
                     element={
-                        email ? <OtpPage /> : <Navigate to="/sign up" />
+                        <OtpPage />
                     }
                 />
 
