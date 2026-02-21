@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import bg from '../../assets/bg.png'
 import PublicRoute from '../../components/auth/PublicRoute'
-import SignupForm from '../../components/auth/SignupForm'
+import SignupForm from '../../components/auth/Signupform'
 
 export default function SignupPage() {
     return (

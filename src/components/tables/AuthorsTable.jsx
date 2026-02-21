@@ -1,4 +1,4 @@
-import AuthorProjectRows from './AuthorProjectRows'
+import AuthorProjectRows from './AuthorProjectrows'
 import TableLayout from './TableLayout'
 
 

@@ -1,5 +1,5 @@
 import FeatureCards from "./FeatureCards";
-import InfoCard from "./InfoCard";
+import InfoCard from "./Infocard";
 import WealthCard from "./WealthCreationcard";
 
 export default function InfoSection(){

@@ -1,7 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { RechartsDevtools } from '@recharts/devtools';
 import { useQuery } from '@tanstack/react-query';
-import { getPageStats } from '../../api/getDashboardData/getPageStats';
+import { getPageStats } from '../../api/getDashboardData/getpagestats';
 import Skeleton from "react-loading-skeleton";
 
 
