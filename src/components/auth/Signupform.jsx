@@ -9,7 +9,7 @@ import { addEmail } from "../../features/auth/registerSlice"
 import { useState } from "react"
 import { useMutation } from "@tanstack/react-query"
 
-export default function Signupform() {
+export default function SignupForm() {
   const { handleSubmit, formState: { errors }, register } = useForm()
   const {mutateAsync,isPending}=useMutation({
     mutationFn:Signup

@@ -8,7 +8,7 @@ import {
 import {
     getPageStats,
     updatePageStat,
-} from "../api/getDashboardData/getpagestats";
+} from "../api/getDashboardData/getPageStats";
 import EditableDataSection from "../components/editdata/EditableDataSection";
 import SaveStatus from "../components/editdata/SaveStatus";
 import {

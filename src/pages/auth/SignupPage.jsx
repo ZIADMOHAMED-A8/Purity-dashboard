@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import bg from '../../assets/bg.png'
 import PublicRoute from '../../components/auth/PublicRoute'
-import Signupform from '../../components/auth/Signupform'
+import SignupForm from '../../components/auth/SignupForm'
 
 export default function SignupPage() {
     return (
@@ -18,7 +18,7 @@ export default function SignupPage() {
                                 </div>
                                 <div className='bg-white text-black rounded-2xl p-6 sm:p-10 md:p-12 w-full'>
                                     <h1 className='font-semibold text-2xl'>Register</h1>
-                                    <Signupform></Signupform>
+                                    <SignupForm></SignupForm>
                                     <p className='my-2'>Already have an account? <Link className='text-[#4fd1c5]' to='/sign in'>Sign in</Link></p>
                                 </div>
                             </div>

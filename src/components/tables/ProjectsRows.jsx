@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import toCurrencyConverter from "../../utils/CurrnecyAdder";
+import toCurrencyConverter from "../../utils/currencyAdder";
 import ProjectsData from "../../utils/ProjectsData";
 import Avatars from "../ui/Avatars";
 import ProgressBar from "../ui/ProgressBar";

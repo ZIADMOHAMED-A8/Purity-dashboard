@@ -1,4 +1,4 @@
-import FeatureCards from "../dashboard/FeautureCards";
+import FeatureCards from "../dashboard/FeatureCards";
 import Invoices from "./Invoices";
 import PaymentMethod from "./PaymentMethod";
 

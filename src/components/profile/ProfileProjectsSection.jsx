@@ -5,7 +5,7 @@ import Skeleton from "react-loading-skeleton";
 import placeholder from "../../assets/Image.png";
 import { getUser } from "../../utils/getUser";
 import ProjectCreateModal from "./ProjectCreateModal";
-import { onCreateProject } from "./onCreateProject";
+import { onCreateProject } from "./helpers/onCreateProject";
 
 export default function ProfileProjectsSection() {
     const [isModalOpen, setIsModalOpen] = useState(false);

@@ -7,9 +7,9 @@ import {
     PackageOpen,
     Layers
   } from "lucide-react";
-import LabeldIcon from "../ui/LabeldIcon";
+import LabeledIcon from "../ui/LabeledIcon";
 import { useQuery } from "@tanstack/react-query";
-import { getNotifications } from "../../api/getDashboardData/getNotifications ";
+import { getNotifications } from "../../api/getDashboardData/getNotifications";
 import Skeleton from "react-loading-skeleton";
 export default function OrdersReview(){
     const iconsMap = {
@@ -43,7 +43,7 @@ export default function OrdersReview(){
                     {data.map(e => 
                     {
                         const icon=iconsMap[e.icon_name]
-                       return <LabeldIcon key={e.id} Icon={icon} Headear={e.title} body={e.date} ></LabeldIcon>
+                       return <LabeledIcon key={e.id} Icon={icon} Headear={e.title} body={e.date} ></LabeledIcon>
                     }
                     )}
                 </div>      

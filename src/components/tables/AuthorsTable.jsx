@@ -1,4 +1,4 @@
-import AuthorPorjectrows from './AuthorProjectrows'
+import AuthorProjectRows from './AuthorProjectRows'
 import TableLayout from './TableLayout'
 
 
@@ -13,7 +13,7 @@ export default function AuthorsTable() {
 
     return (
         <TableLayout title='Authors' columns={columns}>
-            <AuthorPorjectrows></AuthorPorjectrows>
+            <AuthorProjectRows></AuthorProjectRows>
         </TableLayout>
     )
 }

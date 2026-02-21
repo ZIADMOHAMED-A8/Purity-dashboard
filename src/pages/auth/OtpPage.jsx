@@ -98,7 +98,7 @@ export default function OtpPage() {
           {otpErrors && <div className="text-red-400">{otpErrors.message}</div>}
         </div>
 
-        <img src={bg} alt="" className="w-auto h-auto" />
+        <img src={bg} alt="" className="w-auto min-h-[350px] h-auto" />
       </div>
     </div>
   )

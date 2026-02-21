@@ -1,4 +1,4 @@
-import DeductedTransaction from "./DecuctionTransaction";
+import DeductedTransaction from "./DeductionTransaction";
 import Heading from "../ui/Heading";
 import PendingTransaction from "./PendingTransaction";
 import IncomingTransaction from "./IncomingTransaction";

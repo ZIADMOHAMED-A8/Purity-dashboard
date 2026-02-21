@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import toCurrencyConverter from "../../utils/CurrnecyAdder"
+import toCurrencyConverter from "../../utils/currencyAdder"
 import Heading from "../ui/Heading"
 import { getInvoices } from "../../api/getDashboardData/getInvoices"
 import Skeleton from "react-loading-skeleton"

@@ -5,7 +5,7 @@ import PaymentCard from './PaymentCard';
 import Heading from '../ui/Heading';
 import AddingCardForm from './AddingCardForm';
 import { useForm } from "react-hook-form";
-import { toexpiry } from '../../utils/toexpirydate';
+import { toexpiry } from '../../utils/toExpiryDate';
 
 export default function PaymentMethod() {
     const { watch, register, handleSubmit, formState: { errors }, reset } = useForm();

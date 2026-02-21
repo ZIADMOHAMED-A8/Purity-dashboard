@@ -15,7 +15,7 @@ export default function LoginPage() {
                             <img src={shakra} className='max-w-full h-screen object-fill ' alt="" />
                         </div>
                     }
-                    <div className={isDesktop ? 'flex flex-col justify-center h-screen' : 'flex flex-col justify-center h-screen items-center' }>
+                    <div className={isDesktop ? 'flex flex-col justify-center h-screen' : 'flex flex-col justify-center h-screen items-center overflow-hidden' }>
                         <h1 className='text-3xl font-bold text-[#4fd1c5] pb-2'>Welcome back</h1>
                         <p className='text-gray-400'>Enter your password and email to sign in</p>
                         <LoginForm className={isDesktop ? "[&>div>input]:border [&>div>input]:border-gray-300 [&>div>input]:rounded-xl w-xl [&>div>input]:p-2 flex flex-col gap-8  items-start" :

@@ -1,7 +1,7 @@
 import IconWithanUnderline from "./IconWithanUnderline"
 
 
-export default function LabeldIcon({ Icon, Headear, body,...props }) {
+export default function LabeledIcon({ Icon, Headear, body,...props }) {
     return (
         <>
             <div {...props} className="flex gap-8 "  >

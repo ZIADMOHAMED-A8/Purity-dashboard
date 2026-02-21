@@ -10,7 +10,7 @@ const states_mapping = {
 }
 
 
-export default function AuthorPorjectrows() {
+export default function AuthorProjectRows() {
     const {data,isLoading}=useQuery({
         queryKey:['members'],
         queryFn:getMembers

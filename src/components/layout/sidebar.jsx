@@ -2,7 +2,7 @@ import { Home, BarChart3, CreditCard, User, FileText, Rocket, LogOut } from "luc
 import SidebarElement from "./sidebarElement";
 import { useQuery } from "@tanstack/react-query";
 import { getUser } from "../../utils/getUser";
-import MobileSidebar from "./mobilesidebar";
+import MobileSidebar from "./MobileSidebar";
 import { LucideSquareChevronDown } from "lucide-react";
 import { Edit } from "lucide-react";
 import Skeleton from "react-loading-skeleton";
