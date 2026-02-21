@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Sidebar from "../components/layout/sidebar";
 import DashBoardPage from "../pages/DashboardPage";
-import Pagecontainer from "../components/layout/PageContainer";
+import Pagecontainer from "../components/layout/pagecontainer";
 import PaymentMethod from "../components/billing/PaymentMethod";
 import BillingPage from "../pages/BillingPage";
 import TablesPage from "../pages/TalesPage";
