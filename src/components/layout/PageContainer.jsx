@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Heading from "../ui/Heading";
 import { useEffect } from "react";
@@ -24,7 +24,8 @@ export default function Pagecontainer({children}){
                 
                 <p className="text-gray-400 ">Pages<span>/</span><span className="text-black font-medium capitalize">{PageName}</span></p>
                 <Heading>{PageName}</Heading>
-                <Outlet></Outlet>
+                {PageName ? <Outlet></Outlet> :<Navigate to='/dashboard'></Navigate>}
+
                 </div>
                 
             </div>
