@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import bg from "../../assets/bg.png"
+import bg from "../../assets/bg.webp"
 
 import OTPInput from "react-otp-input"
 import { useState, useEffect } from "react"

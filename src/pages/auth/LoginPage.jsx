@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import shakra from '../../assets/chakra.png'
+import shakra from '../../assets/chakra.webp'
 import LoginForm from '../../components/auth/LoginForm'
 import PublicRoute from '../../components/auth/PublicRoute'
 import useBreakpoints from '../../hooks/useBreakpoints'

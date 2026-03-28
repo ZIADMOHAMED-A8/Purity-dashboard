@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query"
 import Skeleton from "react-loading-skeleton";
-import placeholder from "../../assets/Image.png";
+import placeholder from "../../assets/Image.webp";
 import { getUser } from "../../utils/getUser";
 import ProjectCreateModal from "./ProjectCreateModal";
 import { onCreateProject } from "./helpers/onCreateProject";

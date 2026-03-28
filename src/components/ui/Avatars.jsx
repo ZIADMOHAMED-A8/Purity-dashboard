@@ -1,5 +1,5 @@
 
-import Avatar from '../../assets/Avatar.png'
+import Avatar from '../../assets/Avatar.webp'
 export default function Avatars(){
     const avatars=[
         Avatar,

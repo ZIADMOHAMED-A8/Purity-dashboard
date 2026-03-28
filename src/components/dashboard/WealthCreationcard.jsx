@@ -1,4 +1,4 @@
-import wimage from '../../assets/Background.png'
+import wimage from '../../assets/Image.webp'
 
 export default function WealthCard(){
     return(

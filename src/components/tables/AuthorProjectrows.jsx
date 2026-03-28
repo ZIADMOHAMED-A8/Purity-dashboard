@@ -1,6 +1,6 @@
 import OfflineIcon from "../ui/OfflineIcon"
 import OnlineIcon from "../ui/OnlineIcon"
-import Avatar from '../../assets/Avatar.png'
+import Avatar from '../../assets/Avatar.webp'
 import { useQuery } from "@tanstack/react-query"
 import { getMembers } from "../../api/getDashboardData/getMembers"
 import Skeleton from "react-loading-skeleton"
