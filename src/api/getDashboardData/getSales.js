@@ -4,6 +4,7 @@ export async function getMonthlyStats() {
   const { data, error } = await supabase
     .from("monthly_stats")
     .select("*")
+    .order("id", { ascending: true });
 
 
   if (error) {
